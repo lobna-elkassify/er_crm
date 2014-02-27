@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID:</b>
+  <%= @lead_type.id %>
+</p>
+<p>
+  <b>Name:</b>
+  <%= @lead_type.name %>
+</p>
+
+<p>
+  <b>Lead Category:</b>
+  <%= @lead_type.lead_category.try(:name) %>
+</p>

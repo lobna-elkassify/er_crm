@@ -1,5 +1,5 @@
 module ErCrm
   class LeadCategory < ActiveRecord::Base
-    attr_accessible :name
+    has_many :lead_type
   end
 end

@@ -1,0 +1,22 @@
+<h1>Lead Types</h1>
+
+<a href="<%= new_lead_type_path %>">New</a>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @lead_types.each do |lead_type| %>
+    <tr>
+      <td><%= lead_type.name %></td>
+      <td><%= lead_type.lead_category.try(:name) %></td>
+      <td><a href="<%= lead_type_path(lead_type) %>">Show</a></td>
+      <td><a href="<%= edit_lead_type_path(lead_type)%>">Edit</a></td>
+      <td><a href="<%= lead_type_path(lead_type) %>" data-method="delete"
+             data-confirm="Are you sure you want to delete this type?">Delete</a></td>
+    </tr>
+  <% end %>
+</table>

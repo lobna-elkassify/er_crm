@@ -1,0 +1,21 @@
+<h1>New Lead Type</h1>
+
+<form action="<%= lead_types_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <p>
+    <b>Name:</b>
+    <input required type="text" value="<%= @lead_type.name %>" name="lead_type[name]" maxlength="100" size="100">
+  </p>
+
+  <p>
+    <b>Category:</b>
+    <select required name="lead_type[lead_category_id]">
+      <% ErCrm::LeadCategory.all.each do |lead_category| %>
+        <option value="<%= lead_category.id %>" <%= 'selected' if lead_category.id == @lead_type.lead_category_id %>>
+          <%= lead_category.name %>
+        </option>
+      <% end %>
+    </select>
+  </p>
+  <button type="submit">Submit</button>
+</form>
