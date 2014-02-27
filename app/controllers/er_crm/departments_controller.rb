@@ -62,6 +62,7 @@ module ErCrm
       redirect_to departments_path
     end
 
+    private
     def permitted_params
       params.require(:department).permit(:id, :name)
     end
