@@ -1,0 +1,10 @@
+<h1>New Lead Category</h1>
+
+<form action="<%= lead_categories_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <p>
+    <b>Name:</b>
+    <input required type="text" value="<%= @lead_category.name %>" name="lead_category[name]" maxlength="100" size="100">
+  </p>
+  <button type="submit">Submit</button>
+</form>

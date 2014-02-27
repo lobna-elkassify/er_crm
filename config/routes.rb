@@ -1,4 +1,6 @@
 ErCrm::Engine.routes.draw do
-  root to: "dashboard#show"
+  resources :lead_categories, :path => :categories
   resources :departments
+
+  root to: "dashboard#show"
 end

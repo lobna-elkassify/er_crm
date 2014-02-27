@@ -1,0 +1,17 @@
+<h1>Editing Lead Category</h1>
+
+<p>
+  <b>ID:</b> <%= @lead_category.id %><br>
+</p>
+
+<form accept-charset="UTF-8" action="<%= lead_category_path(@lead_category) %>" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="_method" type="hidden" value="put">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  
+  <p>
+    <b>Name:</b>
+    <input required type="text" value="<%= @lead_category.name %>" name="lead_category[name]" maxlength="100" size="100">
+  </p>
+  <button type="submit">Submit</button>
+</form>

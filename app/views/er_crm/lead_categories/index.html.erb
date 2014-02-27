@@ -1,0 +1,20 @@
+<h1>Lead Categories</h1>
+
+<a href="<%= new_lead_category_path%>">New</a>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @lead_categories.each do |lead_category| %>
+    <tr>
+      <td><%= lead_category.name %></td>
+      <td><a href="<%= lead_category_path(lead_category) %>">Show</a></td>
+      <td><a href="<%= edit_lead_category_path(lead_category) %>">Edit</a></td>
+      <td><a href="<%= lead_category_path(lead_category) %>" data-method="delete"
+             data-confirm="Are you sure you want to delete this category?">Delete</a></td>
+    </tr>
+  <% end %>
+</table>
