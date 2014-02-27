@@ -1,7 +1,7 @@
 class CreateErCrmLeadCategories < ActiveRecord::Migration
   def change
     create_table :er_crm_lead_categories do |t|
-      t.string :name, limit: 100
+      t.string :name, limit: 45
       t.timestamps
     end
   end
