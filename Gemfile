@@ -6,6 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
+gem "strong_parameters", "~> 0.2.1"
 gem "jquery-rails"
 
 # Declare any dependencies that are still in development here instead of in

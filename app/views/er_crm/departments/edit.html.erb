@@ -1,0 +1,10 @@
+<b>ID:</b> <%= @department.id %><br>
+<form accept-charset="UTF-8" action="<%= department_path(@department) %>" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="_method" type="hidden" value="put">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  
+  <b>Name:</b>
+  <input type="text" value="<%= @department.name %>" name="department[name]" maxlength="100" size="100">
+  <button type="submit">Submit</button>
+</form>

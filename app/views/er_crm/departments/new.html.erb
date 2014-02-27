@@ -1,0 +1,6 @@
+<form action="<%= departments_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  Name:
+  <input type="text" value="<%= @department.name %>" name="department[name]" maxlength="100" size="100">
+  <button type="submit">Submit</button>
+</form>
