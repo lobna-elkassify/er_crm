@@ -1,0 +1,91 @@
+<script>
+  $(document).ready(function(){
+    toggleRegion();
+
+    $('#countrySelect').change(function(){
+      toggleRegion();
+    });
+  })
+
+  function toggleRegion(){
+    var regionsSelect = $('#customer_region_id');
+    var selectedOption = $("#countrySelect").find('option:selected');
+    
+    if( selectedOption.attr('data-stateEnabled') == 'true' ){
+      regionsSelect.attr('disabled', false);
+    }
+    else{
+      regionsSelect.attr('disabled', true);
+    }
+  }
+</script>
+
+<%= form_for(@customer) do |f| %>
+  <% if @customer.errors.any? %>
+    <div>
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited
+        this customer from being saved:</h2>
+      <ul>
+      <% @customer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email, :required => true %>
+  </div>
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, :required => true %>
+  </div>
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, :required => true %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div>
+    <%= f.label :source %>
+    <%= f.collection_select :source_id, ErCrm::Source.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :country %>
+    <select id="countrySelect" name="customer[country_id]">
+      <% Country.all.each do |country| %>
+        <option value="<%= country.id %>" data-stateEnabled="<%= country.iso2.try(:downcase) == 'us' %>"><%= country.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div>
+    <%= f.label :region %>
+    <%= f.collection_select :region_id, Region.all, :id, :name, {include_blank: true} %>
+  </div>  
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div>
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code %>
+  </div>
+  <div>
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address, :required => true %>
+  </div>
+  <div>
+    <%= f.label :owner_user %>
+    <%= f.collection_select :created_by_user_id, User.all, :id, :name, {include_blank: true} %>
+  </div>
+  <div>
+    <%= f.label :customer_user %>
+    <%= f.collection_select :customer_user_id, User.all, :id, :name, {include_blank: true} %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

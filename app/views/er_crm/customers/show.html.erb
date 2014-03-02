@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID:</b> 
+  <%= @customer.id %>
+</p>
+<p>
+  <b>Email:</b>
+  <a href="mailto:<%= @customer.email %>"><%= @customer.email %></a>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @customer.phone %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @customer.source.try(:name) %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @customer.country.try(:name) %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @customer.address_line %>
+</p>
+
+<p>
+  <b>Owner User:</b>
+  <%= @customer.owner_user.try(:name) %>
+</p>
+
+<p>
+  <b>Customer user:</b>
+  <%= @customer.user.try(:name) %>
+</p>
