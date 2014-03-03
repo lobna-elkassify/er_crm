@@ -1,6 +1,6 @@
 class ErCrm::CustomersController < ErCrm::ApplicationController
   def index
-    @customers = Customer.all#includes([:country, :region, :owner_user, :user])
+    @customers = ErCrm::Customer.all#includes([:country, :region, :owner_user, :user])
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = ErCrm::Customer.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -16,7 +16,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def new
-    @customer = Customer.new
+    @customer = ErCrm::Customer.new
 
     respond_to do |format|
       format.html
@@ -24,7 +24,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = ErCrm::Customer.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -32,7 +32,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def create
-    @customer = Customer.new(permitted_params)
+    @customer = ErCrm::Customer.new(permitted_params)
 
     begin
       @customer.save!
@@ -43,7 +43,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = ErCrm::Customer.find(params[:id])
     @customer.attributes = permitted_params
 
     begin
@@ -55,7 +55,7 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    @customer = ErCrm::Customer.find(params[:id])
     @customer.destroy
 
     redirect_to customers_path
@@ -66,6 +66,5 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
     params.require(:customer).permit(:email, :first_name, :last_name, :phone, :source_id, :region_id, :country_id, 
                                      :city, :zip_code, :street_address, :created_by_user_id, :customer_user_id)
   end
-
 end
 

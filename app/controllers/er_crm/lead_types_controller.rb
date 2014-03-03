@@ -1,6 +1,6 @@
 class ErCrm::LeadTypesController < ErCrm::ApplicationController
   def index
-    @lead_types = LeadType.includes(:lead_category)
+    @lead_types = ErCrm::LeadType.includes(:lead_category)
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def show
-    @lead_type = LeadType.includes(:lead_category).find(params[:id])
+    @lead_type = ErCrm::LeadType.includes(:lead_category).find(params[:id])
 
     respond_to do |format|
       format.html
@@ -16,7 +16,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def new
-    @lead_type = LeadType.new
+    @lead_type = ErCrm::LeadType.new
 
     respond_to do |format|
       format.html
@@ -24,7 +24,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def edit
-    @lead_type = LeadType.find(params[:id])
+    @lead_type = ErCrm::LeadType.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -32,7 +32,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def create
-    @lead_type = LeadType.new(permitted_params)
+    @lead_type = ErCrm::LeadType.new(permitted_params)
 
     begin
       @lead_type.save!
@@ -43,7 +43,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def update
-    @lead_type = LeadType.find(params[:id])
+    @lead_type = ErCrm::LeadType.find(params[:id])
     @lead_type.attributes = permitted_params
 
     begin
@@ -55,7 +55,7 @@ class ErCrm::LeadTypesController < ErCrm::ApplicationController
   end
 
   def destroy
-    @lead_type = LeadType.find(params[:id])
+    @lead_type = ErCrm::LeadType.find(params[:id])
     @lead_type.destroy
 
     redirect_to lead_types_path

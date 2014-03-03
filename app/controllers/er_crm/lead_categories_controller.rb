@@ -1,6 +1,6 @@
 class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   def index
-    @lead_categories = LeadCategory.all
+    @lead_categories = ErCrm::LeadCategory.all
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
   
   def new
-    @lead_category = LeadCategory.new
+    @lead_category = ErCrm::LeadCategory.new
 
     respond_to do |format|
       format.html
@@ -16,7 +16,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
 
   def create
-    @lead_category = LeadCategory.new(permitted_params)
+    @lead_category = ErCrm::LeadCategory.new(permitted_params)
 
     begin
       @lead_category.save!
@@ -27,7 +27,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
 
   def show
-    @lead_category = LeadCategory.find(params[:id])
+    @lead_category = ErCrm::LeadCategory.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -35,7 +35,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
 
   def edit
-    @lead_category = LeadCategory.find(params[:id])
+    @lead_category = ErCrm::LeadCategory.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -43,7 +43,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
 
   def update
-    @lead_category = LeadCategory.find(params[:id])
+    @lead_category = ErCrm::LeadCategory.find(params[:id])
     @lead_category.attributes = permitted_params
 
     begin
@@ -55,7 +55,7 @@ class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
   end
 
   def destroy
-    @lead_category = LeadCategory.find(params[:id])
+    @lead_category = ErCrm::LeadCategory.find(params[:id])
     @lead_category.destroy
 
     redirect_to lead_categories_path

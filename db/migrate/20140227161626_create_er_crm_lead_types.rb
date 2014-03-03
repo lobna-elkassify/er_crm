@@ -6,6 +6,6 @@ class CreateErCrmLeadTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_foreign_key :er_crm_lead_types, :lead_categories, name: "fk_lead_type_lead_category_id"
+    add_foreign_key :er_crm_lead_types, :er_crm_lead_categories, column: "lead_category_id", name: "fk_lead_type_lead_category_id"
   end
 end

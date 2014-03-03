@@ -1,6 +1,6 @@
 class ErCrm::DepartmentsController < ErCrm::ApplicationController
   def index
-    @departments = Department.all
+    @departments = ErCrm::Department.all
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def new
-    @department = Department.new
+    @department = ErCrm::Department.new
 
     respond_to do |format|
       format.html
@@ -16,7 +16,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def create
-    @department = Department.new(permitted_params)
+    @department = ErCrm::Department.new(permitted_params)
 
     begin
       @department.save!
@@ -27,7 +27,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def show
-    @department = Department.find(params[:id])
+    @department = ErCrm::Department.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -35,7 +35,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def edit
-    @department = Department.find(params[:id])
+    @department = ErCrm::Department.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -43,7 +43,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def update
-    @department = Department.find(params[:id])
+    @department = ErCrm::Department.find(params[:id])
     @department.attributes = permitted_params
 
     begin
@@ -55,7 +55,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def destroy
-    @department = Department.find(params[:id])
+    @department = ErCrm::Department.find(params[:id])
     @department.destroy
 
     redirect_to departments_path
