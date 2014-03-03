@@ -25,8 +25,8 @@
       <td><%= lead.lead_category.try(:name) %></td>
       <td><%= lead.lead_type.try(:name) %></td>
       <td>
-        <%= link_to lead.reservation_id, "/"
-            #link_to lead.reservation_id, activeadmin_reservation_path(lead.reservation_id) 
+        <%= #link_to lead.reservation_id, "/"
+            link_to lead.reservation_id, "/activeadmin/reservations/#{lead.reservation_id}"
         %>
       </td>
       <td><%= lead.follow_up.try(:datetime).try(:strftime, "%Y-%m-%d %H:%M") %></td>

@@ -12,8 +12,8 @@
 
 <p>
   <b>Reservation:</b>
-  <%= link_to @lead.reservation_id, "/"
-      #link_to @lead.reservation_id, activeadmin_reservation_path(@lead.reservation_id) 
+  <%= #link_to @lead.reservation_id, "/"
+      link_to @lead.reservation_id, "/activeadmin/reservations/#{@lead.reservation_id}"
   %>
 </p>
 
