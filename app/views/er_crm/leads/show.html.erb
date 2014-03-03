@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customer:</b>
+  <%= @lead.customer.try(:name) %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @lead.status.try(:name) %>
+</p>
+
+<p>
+  <b>Reservation:</b>
+  <%= link_to @lead.reservation_id, "/"
+      #link_to @lead.reservation_id, activeadmin_reservation_path(@lead.reservation_id) 
+  %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @lead.department.try(:name) %>
+</p>
+
+<p>
+  <b>Lead Category:</b>
+  <%= @lead.lead_category.try(:name) %>
+</p>
+
+<p>
+  <b>Lead Type:</b>
+  <%= @lead.lead_type.try(:name) %>
+</p>
+
+<p>
+  <b>Owner User:</b>
+  <%= @lead.owner_user.try(:name) %>
+</p>
+
+<p>
+  <b>Assigned User:</b>
+  <%= @lead.assigned_user.try(:name) %>
+</p>
+
+<table border="1">
+  <tr>
+    <td>
+      <b>Follow up:</b><br/>
+      <%= @lead.follow_up.try(:datetime).try(:strftime, "%Y-%m-%d %H:%M") %><br/>
+      <%= @lead.follow_up.try(:description) %>
+    </td>
+  </tr>
+</table>
+
+<p>
+  <b>Comments:</b>
+  <%= @lead.comments %>
+</p>

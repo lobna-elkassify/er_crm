@@ -1,0 +1,42 @@
+<h1>Leads</h1>
+
+<a href="<%= new_lead_path %>">New Lead</a>
+
+<table border="1">
+  <tr>
+    <th>Customer</th>    
+    <th>Status</th>
+    <th>Department</th>
+    <th>Lead category</th>
+    <th>Lead type</th>
+    <th>Reservation</th>    
+    <th>Follow up</th>
+    <th>Created by user</th>
+    <th>Assigned user</th>
+    <th>Comments</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @leads.each do |lead| %>
+    <tr>
+      <td><%= lead.customer.try(:name) %></td>
+      <td><%= lead.status.try(:name) %></td>
+      <td><%= lead.department.try(:name) %></td>
+      <td><%= lead.lead_category.try(:name) %></td>
+      <td><%= lead.lead_type.try(:name) %></td>
+      <td>
+        <%= link_to lead.reservation_id, "/"
+            #link_to lead.reservation_id, activeadmin_reservation_path(lead.reservation_id) 
+        %>
+      </td>
+      <td><%= lead.follow_up.try(:datetime).try(:strftime, "%Y-%m-%d %H:%M") %></td>
+      <td><%= lead.owner_user.try(:name) %></td>
+      <td><%= lead.assigned_user.try(:name) %></td>
+      <td><%= lead.comments %></td>
+      <td><a href="<%= lead_path(lead) %>">Show</a></td>
+      <td><a href="<%= edit_lead_path(lead) %>">Edit</a></td>
+      <td><a href="<%= lead_path(lead) %>" data-method="delete"
+             data-confirm="Are you sure you want to delete this lead?">Delete</a></td>
+    </tr>
+  <% end %>
+</table>

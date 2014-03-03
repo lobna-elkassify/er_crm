@@ -1,0 +1,64 @@
+<%= form_for(@lead) do |f| %>
+  <% if @lead.errors.any? %>
+    <div>
+      <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
+
+      <ul>
+      <% @lead.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= f.label :status %>
+    <%= f.collection_select :status_id, ErCrm::Status.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :reservation %>
+    <%= f.collection_select :reservation_id, Reservation.all, :id, :id %>
+  </div>
+  <div>
+    <%= f.label :department %>
+    <%= f.collection_select :department_id, ErCrm::Department.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :customer %>
+    <%= f.collection_select :customer_id, ErCrm::Customer.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :lead_category %>
+    <%= f.collection_select :lead_category_id, ErCrm::LeadCategory.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :lead_type %>
+    <%= f.collection_select :lead_type_id, ErCrm::LeadType.all, :id, :name %>
+  </div>  
+  <div>
+    <%= f.label :owner_user %>
+    <%= f.collection_select :created_by_user_id, User.all, :id, :name, {include_blank: true} %>
+  </div>
+  <div>
+    <%= f.label :assigned_user %>
+    <%= f.collection_select :assigned_user_id, User.all, :id, :name, {include_blank: true} %>
+  </div>
+  <%= f.fields_for :follow_up do |follow_up_form| %> 
+    <div>
+      Follow up Date
+      <%= follow_up_form.datetime_select :datetime, {:start_year => Time.now.year, :end_year => Time.now.year + 3,
+                                                     :ampm => true, :minute_step => 30} %>
+    </div>
+    <div>
+      <%= follow_up_form.label :description, :style => "vertical-align: top" %>
+      <%= follow_up_form.text_area :description, :cols => 50, :rows => 5 %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :comments, :style => "vertical-align: top" %>
+    <%= f.text_area :comments, :cols => 50, :rows => 5 %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
