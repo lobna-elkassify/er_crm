@@ -9,7 +9,7 @@ class User
   end
 
   def name 
-    [last_name, first_name].join(' ')
+    [first_name, last_name].join(' ')
   end
 
   def self.all
