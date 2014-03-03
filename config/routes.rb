@@ -1,4 +1,5 @@
 ErCrm::Engine.routes.draw do
+  resources :leads
   resources :customers
   resources :lead_types
   resources :lead_categories

@@ -5,6 +5,8 @@ module ErCrm
       belongs_to :region
       belongs_to :owner_user, foreign_key: "created_by_user_id", class_name: "User"
       belongs_to :user, foreign_key: "customer_user_id", class_name: "User"
+
+      has_many :leads
     #-----
 
     #-Validations
