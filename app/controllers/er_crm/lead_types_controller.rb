@@ -1,70 +1,68 @@
-module ErCrm
-  class LeadTypesController < ApplicationController
-    def index
-      @lead_types = LeadType.includes(:lead_category)
-  
-      respond_to do |format|
-        format.html
-      end
-    end
-  
-    def show
-      @lead_type = LeadType.includes(:lead_category).find(params[:id])
-  
-      respond_to do |format|
-        format.html
-      end
-    end
-  
-    def new
-      @lead_type = LeadType.new
-  
-      respond_to do |format|
-        format.html
-      end
-    end
-  
-    def edit
-      @lead_type = LeadType.find(params[:id])
+class ErCrm::LeadTypesController < ErCrm::ApplicationController
+  def index
+    @lead_types = LeadType.includes(:lead_category)
 
-      respond_to do |format|
-        format.html
-      end
+    respond_to do |format|
+      format.html
     end
-  
-    def create
-      @lead_type = LeadType.new(permitted_params)
-  
-      begin
-        @lead_type.save!
-        redirect_to lead_types_path
-      rescue ActiveRecord::RecordInvalid => e
-        render :action => :new
-      end
-    end
-  
-    def update
-      @lead_type = LeadType.find(params[:id])
-      @lead_type.attributes = permitted_params
+  end
 
-      begin
-        @lead_type.save!
-        redirect_to lead_type_path(@lead_type), notice: 'Lead Type was successfully updated.'
-      rescue ActiveRecord::RecordInvalid => e
-        render :action => :edit
-      end
+  def show
+    @lead_type = LeadType.includes(:lead_category).find(params[:id])
+
+    respond_to do |format|
+      format.html
     end
-  
-    def destroy
-      @lead_type = LeadType.find(params[:id])
-      @lead_type.destroy
-  
+  end
+
+  def new
+    @lead_type = LeadType.new
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def edit
+    @lead_type = LeadType.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def create
+    @lead_type = LeadType.new(permitted_params)
+
+    begin
+      @lead_type.save!
       redirect_to lead_types_path
+    rescue ActiveRecord::RecordInvalid => e
+      render :action => :new
     end
+  end
 
-    private
-    def permitted_params
-      params.require(:lead_type).permit(:id, :name, :lead_category_id)
+  def update
+    @lead_type = LeadType.find(params[:id])
+    @lead_type.attributes = permitted_params
+
+    begin
+      @lead_type.save!
+      redirect_to lead_type_path(@lead_type), notice: 'Lead Type was successfully updated.'
+    rescue ActiveRecord::RecordInvalid => e
+      render :action => :edit
     end
+  end
+
+  def destroy
+    @lead_type = LeadType.find(params[:id])
+    @lead_type.destroy
+
+    redirect_to lead_types_path
+  end
+
+  private
+  def permitted_params
+    params.require(:lead_type).permit(:id, :name, :lead_category_id)
   end
 end

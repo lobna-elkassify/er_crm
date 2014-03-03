@@ -1,70 +1,68 @@
-module ErCrm
-  class LeadCategoriesController < ApplicationController
-    def index
-      @lead_categories = LeadCategory.all
-  
-      respond_to do |format|
-        format.html
-      end
-    end
-    
-    def new
-      @lead_category = LeadCategory.new
-  
-      respond_to do |format|
-        format.html
-      end
-    end
+class ErCrm::LeadCategoriesController < ErCrm::ApplicationController
+  def index
+    @lead_categories = LeadCategory.all
 
-    def create
-      @lead_category = LeadCategory.new(permitted_params)
-  
-      begin
-        @lead_category.save!
-        redirect_to lead_categories_path
-      rescue ActiveRecord::RecordInvalid => e
-        render :action => :new
-      end
+    respond_to do |format|
+      format.html
     end
-
-    def show
-      @lead_category = LeadCategory.find(params[:id])
+  end
   
-      respond_to do |format|
-        format.html
-      end
+  def new
+    @lead_category = LeadCategory.new
+
+    respond_to do |format|
+      format.html
     end
+  end
 
-    def edit
-      @lead_category = LeadCategory.find(params[:id])
+  def create
+    @lead_category = LeadCategory.new(permitted_params)
 
-      respond_to do |format|
-        format.html
-      end
-    end
-
-    def update
-      @lead_category = LeadCategory.find(params[:id])
-      @lead_category.attributes = permitted_params
-
-      begin
-        @lead_category.save!
-        redirect_to lead_category_path(@lead_category), notice: 'Lead Category was successfully updated.'
-      rescue ActiveRecord::RecordInvalid => e
-        render :action => :edit
-      end
-    end
-  
-    def destroy
-      @lead_category = LeadCategory.find(params[:id])
-      @lead_category.destroy
-  
+    begin
+      @lead_category.save!
       redirect_to lead_categories_path
+    rescue ActiveRecord::RecordInvalid => e
+      render :action => :new
     end
+  end
 
-    private
-    def permitted_params
-      params.require(:lead_category).permit(:id, :name)
+  def show
+    @lead_category = LeadCategory.find(params[:id])
+
+    respond_to do |format|
+      format.html
     end
+  end
+
+  def edit
+    @lead_category = LeadCategory.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def update
+    @lead_category = LeadCategory.find(params[:id])
+    @lead_category.attributes = permitted_params
+
+    begin
+      @lead_category.save!
+      redirect_to lead_category_path(@lead_category), notice: 'Lead Category was successfully updated.'
+    rescue ActiveRecord::RecordInvalid => e
+      render :action => :edit
+    end
+  end
+
+  def destroy
+    @lead_category = LeadCategory.find(params[:id])
+    @lead_category.destroy
+
+    redirect_to lead_categories_path
+  end
+
+  private
+  def permitted_params
+    params.require(:lead_category).permit(:id, :name)
   end
 end
