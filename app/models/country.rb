@@ -14,6 +14,10 @@ class Country
   end
 
   def self.find(id)
-    Country.all.select{|user| user.id == id}.first
+    Country.all.select{|country| country.id == id}.first
+  end
+
+  def self.usa
+    Country.all.select{|country| country.iso2.try(:downcase) == 'us'}.first
   end
 end

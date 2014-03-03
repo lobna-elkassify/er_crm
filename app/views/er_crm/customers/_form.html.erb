@@ -1,10 +1,15 @@
 <script>
   $(document).ready(function(){
     toggleRegion();
+    populateCustomerInfo();
 
     $('#countrySelect').change(function(){
       toggleRegion();
     });
+
+    $("#cutomerUserSelect").change(function(){
+      populateCustomerInfo();
+    })
   })
 
   function toggleRegion(){
@@ -16,6 +21,23 @@
     }
     else{
       regionsSelect.attr('disabled', true);
+    }
+  }
+
+  function populateCustomerInfo(){
+    var selectedUser = $("#cutomerUserSelect").find('option:selected');
+    var customerFNameField = $("#customer_first_name");
+    var customerLNameField = $("#customer_last_name");
+    var customerEmailField = $("#customer_email");
+    if (selectedUser.val() == ""){
+      customerFNameField.removeAttr("readonly").val("<%= @customer.first_name %>");
+      customerLNameField.removeAttr("readonly").val("<%= @customer.last_name %>");
+      customerEmailField.removeAttr("readonly").val("<%= @customer.email %>");
+    }
+    else{
+      customerFNameField.attr("readonly", true).val(selectedUser.attr("data-userFName"));
+      customerLNameField.attr("readonly", true).val(selectedUser.attr("data-userLName"));
+      customerEmailField.attr("readonly", true).val(selectedUser.attr("data-userEmail"));
     }
   }
 </script>
@@ -34,8 +56,15 @@
   <% end %>
 
   <div>
-    <%= f.label :email %>
-    <%= f.text_field :email, :required => true %>
+    <%= f.label :customer_user %>
+    <select id="cutomerUserSelect" name="customer[customer_user_id]">
+      <option value=""></option>
+      <% User.all.each do |user| %>
+        <option value="<%= user.id %>" data-userEmail = "<%= user.email %>"
+                data-userFName = "<%= user.first_name %>" data-userLName = "<%= user.last_name %>"
+                <%= 'selected' if @customer.customer_user_id == user.id %> ><%= user.name %></option>
+      <% end %>
+    </select>    
   </div>
   <div>
     <%= f.label :first_name %>
@@ -44,6 +73,10 @@
   <div>
     <%= f.label :last_name %>
     <%= f.text_field :last_name, :required => true %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email, :readonly => true, :required => true %>
   </div>
   <div>
     <%= f.label :phone %>
@@ -57,13 +90,16 @@
     <%= f.label :country %>
     <select id="countrySelect" name="customer[country_id]">
       <% Country.all.each do |country| %>
-        <option value="<%= country.id %>" data-stateEnabled="<%= country.iso2.try(:downcase) == 'us' %>"><%= country.name %></option>
+        <option value="<%= country.id %>" data-stateEnabled="<%= country.id == Country.usa.id %>"
+                <%= 'selected' if @customer.country_id == country.id %> >
+          <%= country.name %>
+        </option>
       <% end %>
     </select>
   </div>
   <div>
     <%= f.label :region %>
-    <%= f.collection_select :region_id, Region.all, :id, :name, {include_blank: true} %>
+    <%= f.collection_select :region_id, Region.where(:country_id => Country.usa.id), :id, :name, {include_blank: true} %>
   </div>  
   <div>
     <%= f.label :city %>
@@ -80,10 +116,6 @@
   <div>
     <%= f.label :owner_user %>
     <%= f.collection_select :created_by_user_id, User.all, :id, :name, {include_blank: true} %>
-  </div>
-  <div>
-    <%= f.label :customer_user %>
-    <%= f.collection_select :customer_user_id, User.all, :id, :name, {include_blank: true} %>
   </div>
   <div>
     <%= f.submit "Submit" %>

@@ -1,15 +1,21 @@
 class User
-  attr_accessor :name, :id
+  attr_accessor :first_name, :last_name, :email, :id
 
-  def initialize(name, id)
+  def initialize(first_name, last_name, email, id)
     @id = id
-    @name = name
+    @first_name = first_name
+    @last_name = last_name
+    @email = email
+  end
+
+  def name 
+    [last_name, first_name].join(' ')
   end
 
   def self.all
-    [User.new('Lobna', 1),
-     User.new('Heba', 2),
-     User.new('Wessam', 3)]
+    [User.new('Lobna', 'Elkassify', 'lobna@email.com', 1),
+     User.new('Heba', 'Waly', 'heba@email.com', 2),
+     User.new('Wessam', 'Magdy', 'wessam@email.com', 3)]
   end
 
   def self.find(id)
