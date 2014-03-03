@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary = "Eaglerider CRM."
   s.description = "Eaglerider CRM System."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"] - 
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "er_crm.gemspec"] - 
             ["app/models/user.rb", "app/models/region.rb", "app/models/country.rb", "app/models/devise.rb"]
   s.test_files = Dir["test/**/*"]
 

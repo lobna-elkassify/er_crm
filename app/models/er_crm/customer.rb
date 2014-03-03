@@ -25,22 +25,22 @@ module ErCrm
         [self.street_address, self.city].join(' ') + ", #{ self.region.try(:name) } #{self.zip_code}"
       end
 
-      #will be deleted
-        def region
-          Region.find(region_id)
-        end
+      #Uncoment these lines if the enngine is run from the dummy hosting app
+        # def region
+        #   Region.find(region_id)
+        # end
 
-        def country
-          Country.find(country_id)
-        end
+        # def country
+        #   Country.find(country_id)
+        # end
 
-        def owner_user
-          User.find(created_by_user_id)
-        end
+        # def owner_user
+        #   User.find(created_by_user_id)
+        # end
 
-        def user
-          User.find(customer_user_id)
-        end
+        # def user
+        #   User.find(customer_user_id)
+        # end
       #-----
     #-----
   end
