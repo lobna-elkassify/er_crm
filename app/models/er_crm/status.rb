@@ -1,6 +1,6 @@
 require_dependency 'constants'
 
-ErCrm::State = Constants.new({
+ErCrm::Status = Constants.new({
   :new => {:id => 1, :name => 'New'},
   :active => {:id => 2, :name => 'Active'},
   :closed => {:id => 3, :name => 'Closed'},
