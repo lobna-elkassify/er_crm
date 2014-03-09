@@ -13,5 +13,17 @@
     <b>Name:</b>
     <input required type="text" value="<%= @department.name %>" name="department[name]" maxlength="45" size="45">
   </p>
+
+  <p>
+    <b>Category:</b>
+    <select required name="department[category_id]">
+      <% ErCrm::LeadCategory.all.each do |lead_category| %>
+        <option value="<%= lead_category.id %>" <%= 'selected' if lead_category.id == @department.category_id %>>
+          <%= lead_category.name %>
+        </option>
+      <% end %>
+    </select>
+  </p>
+
   <button type="submit">Submit</button>
 </form>

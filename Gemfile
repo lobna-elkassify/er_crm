@@ -6,9 +6,15 @@ source "https://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
+gem 'mysql2'
 gem "strong_parameters", "~> 0.2.1"
 gem "foreigner", "~> 1.5.0"
+gem "audited-activerecord"
 gem "jquery-rails"
+
+group :sqlite do
+  gem "sqlite3"
+end
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

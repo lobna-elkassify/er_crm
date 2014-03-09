@@ -1,0 +1,1 @@
+ErCrm::Engine.load_seed

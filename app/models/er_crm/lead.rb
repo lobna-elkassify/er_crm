@@ -3,7 +3,6 @@ module ErCrm
     #-Associations-----
       belongs_to :customer
       belongs_to :department
-      belongs_to :lead_category
       belongs_to :lead_type
       belongs_to :follow_up
       accepts_nested_attributes_for :follow_up
@@ -12,6 +11,8 @@ module ErCrm
       belongs_to :owner_user, :foreign_key => "created_by_user_id", :class_name => "User"
       belongs_to :assigned_user, :foreign_key => "assigned_user_id", :class_name => "User"
     #-----
+
+    #audited :allow_mass_assignment => true
 
     #-Attributes----
       def status

@@ -1,6 +1,6 @@
 class ErCrm::DepartmentsController < ErCrm::ApplicationController
   def index
-    @departments = ErCrm::Department.all
+    @departments = ErCrm::Department.includes(:lead_category)
 
     respond_to do |format|
       format.html
@@ -27,7 +27,7 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
   end
 
   def show
-    @department = ErCrm::Department.find(params[:id])
+    @department = ErCrm::Department.includes(:lead_category).find(params[:id])
 
     respond_to do |format|
       format.html
@@ -63,6 +63,6 @@ class ErCrm::DepartmentsController < ErCrm::ApplicationController
 
   private
   def permitted_params
-    params.require(:department).permit(:id, :name)
+    params.require(:department).permit(:id, :name, :category_id)
   end
 end

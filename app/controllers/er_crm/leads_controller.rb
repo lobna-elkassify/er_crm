@@ -1,6 +1,6 @@
 class ErCrm::LeadsController < ErCrm::ApplicationController
   def index
-    @leads = ErCrm::Lead.includes(:customer, :department, :lead_category, :lead_type, :follow_up)#.includes(:owner_user, :assigned_user)
+    @leads = ErCrm::Lead.includes(:customer, :department, :lead_type, :follow_up)#.includes(:owner_user, :assigned_user)
 
     respond_to do |format|
       format.html
@@ -8,7 +8,7 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
   end
 
   def show
-    @lead = ErCrm::Lead.includes(:customer, :department, :lead_category, :lead_type, :follow_up)#.includes(:owner_user, :assigned_user)
+    @lead = ErCrm::Lead.includes(:customer, :department, :lead_type, :follow_up)#.includes(:owner_user, :assigned_user)
                        .find(params[:id])
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
 
   def permitted_params
     params.require(:lead).permit(:comments, :status_id, :department_id, :reservation_id, :customer_id, :lead_type_id,
-                                 :lead_category_id, :follow_up_id, :created_by_user_id, :assigned_user_id,
+                                 :follow_up_id, :created_by_user_id, :assigned_user_id,
                                  :follow_up_attributes => [:id, :datetime, :description])
   end
 end

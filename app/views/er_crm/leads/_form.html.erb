@@ -28,10 +28,6 @@
     <%= f.collection_select :customer_id, ErCrm::Customer.all, :id, :name %>
   </div>
   <div>
-    <%= f.label :lead_category %>
-    <%= f.collection_select :lead_category_id, ErCrm::LeadCategory.all, :id, :name %>
-  </div>
-  <div>
     <%= f.label :lead_type %>
     <%= f.collection_select :lead_type_id, ErCrm::LeadType.all, :id, :name %>
   </div>  

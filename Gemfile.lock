@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     er_crm (0.0.1)
+      audited-activerecord
       foreigner (~> 1.5.0)
       jquery-rails (< 3.0.0)
       rails (= 3.2.14)
@@ -38,6 +39,10 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     arel (3.0.3)
+    audited (3.0.0)
+    audited-activerecord (3.0.0)
+      activerecord (~> 3.0)
+      audited (= 3.0.0)
     builder (3.0.4)
     erubis (2.7.0)
     foreigner (1.5.0)
@@ -54,6 +59,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.8.4)
+    mysql2 (0.3.13)
     polyglot (0.3.4)
     rack (1.4.5)
     rack-cache (1.2)
@@ -101,8 +107,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  audited-activerecord
   er_crm!
   foreigner (~> 1.5.0)
   jquery-rails
+  mysql2
   sqlite3
   strong_parameters (~> 0.2.1)

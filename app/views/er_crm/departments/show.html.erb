@@ -8,3 +8,7 @@
   <b>Name:</b> 
   <%= @department.name %>
 </p>
+<p>
+  <b>Lead Category:</b>
+  <%= @department.lead_category.try(:name) %>
+</p>
