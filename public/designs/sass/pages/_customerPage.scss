@@ -1,4 +1,7 @@
 .costmerPage{
+	.imgContainer{
+		width: 104px;
+	}
 	h3{
 		margin: 0 0 5px 0;
 	}
@@ -9,6 +12,26 @@
 		&.small{
 			float: none;
 			text-transform: none;
+		}
+	}
+	
+	.customerPart{
+		.form-horizontal{
+			margin-left: -20px;
+			[class*="span"] {
+				margin-left: 20px;
+			}
+			.span3{
+				width: 260px;
+				.control-label {
+					
+					width:auto;
+				}				
+			}		
+			p{
+				padding-right: 0px;
+			}	
+			
 		}
 	}
 }

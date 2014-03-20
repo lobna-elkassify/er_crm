@@ -272,6 +272,104 @@ hr{
 	}
 
 }
+
+/********* ********* *********/
+/********* pagination CSS *********/
+/********* ********* *********/
+
+.pagination {
+	margin-top: 0;
+	ul{
+		box-shadow:none;
+		border-radius: 0;
+		
+		> li > a{
+			background:  $grayLighter;
+			border: 1px solid $white;
+			padding: 3px 10px;
+			font-size: 13px;
+			&:hover{
+				background:   darken($grayLighter,2%);
+			}
+		}
+		>li.selected{
+			>a{
+				background:   $orange;
+				font-weight: bold;
+				color: $white;
+			}
+		}
+		 > li:first-child > a{
+		 	border-radius: 0;
+		 }
+		  > li:last-child > a{
+		  	border-radius: 0;
+		  }
+	}
+}
+
+/********* ********* *********/
+/********* Tabel CSS *********/
+/********* ********* *********/
+
+#table{
+	
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+			-moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+			border: 2px solid $linkHover;
+			background-color: $white;
+			-webkit-background-clip: padding-box;
+			padding: 1px;
+			.table{
+				margin-bottom: 0;
+				th{
+					background:  darken($grayLighter,1%);	
+				}
+				tr:nth-child(odd){
+						td{
+							background:  lighten($grayLighter,5%);	
+						}
+					}
+				td{
+					background:  lighten($grayLighter,3%);					
+				}
+				th,td{
+					border-right:1px solid #ddd;
+					&:last-child{
+						border-right:none;
+					}
+				}
+			}
+}
+.showEntries{
+	display: inline-block;
+	font-size: 13px;
+	
+	color: $gray;
+}
+.showPerPage{
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 13px;
+	color: $gray;
+	span,div{
+		display: inline-block;
+	}
+	form .dropdown{
+		width: 49px;
+		height: 24px;
+		select{
+			padding: 0px 3px;
+			font-size: 12px;
+			height: 26px;
+		}
+	}
+	form .dropdown:before, form .dropdown:after{
+		right: 5px;
+		top: 7px;
+	}
+}
 /********* ********* *********/
 /********* icons class *********/
 /********* ********* *********/
@@ -291,3 +389,5 @@ hr{
 	margin-top: 5px;
 	display: inline-block;
 }
+
+

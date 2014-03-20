@@ -12,6 +12,16 @@ module ErCrm
       belongs_to :assigned_user, :foreign_key => "assigned_user_id", :class_name => "User"
     #-----
 
+    #-Scopes----
+      scope :open, where(:status_id => [Status[:new].id, Status[:active].id])
+      scope :sold, where(:status_id => Status[:sold].id)
+      scope :closed, where(:status_id => Status[:closed].id)
+
+      scope :open_of_customer, ->(customer_id) {open.where(:customer_id => customer_id)}
+      scope :sold_of_customer, ->(customer_id) {sold.where(:customer_id => customer_id)}
+      scope :closed_of_customer, ->(customer_id) {closed.where(:customer_id => customer_id)}
+    #-----
+
     audited :allow_mass_assignment => true
 
     #-Attributes----

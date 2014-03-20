@@ -61,10 +61,33 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
     redirect_to customers_path
   end
 
+  def update_single_attribute
+    @customer = ErCrm::Customer.find(params[:id])
+    attribute_name = params[:attribute_name].to_sym
+    attribute_value = params[:attribute_value]
+
+    @customer.attributes = {attribute_name => attribute_value}
+    
+    respond_to do |format|
+      format.js do
+        begin
+          @customer.save!
+          render :partial => "update_single_attribute.js.erb", :locals =>{
+            :attribute_name => attribute_name.to_s,
+            :attribute_value => attribute_value
+          }
+        rescue ActiveRecord::RecordInvalid => e
+          render :text => "<span class='help-block js-error'>#{@customer.errors[attribute_name].first}</span>"
+        end
+      end
+    end
+  end
+
   private
   def permitted_params
-    params.require(:customer).permit(:email, :first_name, :last_name, :phone, :source_id, :region_id, :country_id, 
-                                     :city, :zip_code, :street_address, :created_by_user_id, :customer_user_id)
+    params.require(:customer).permit(:email, :first_name, :last_name, :home_phone, :work_phone, :mobile_number, 
+                                     :fax_number, :source_id, :region_id, :country_id, :city, :zip_code, 
+                                     :street_address, :created_by_user_id, :customer_user_id)
   end
 end
 

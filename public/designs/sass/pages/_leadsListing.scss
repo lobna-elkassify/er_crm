@@ -1,0 +1,73 @@
+.leadsListing{
+		h2{
+			margin-top: 0;
+			.icon-pencil{
+				margin-top: 3px;
+		margin-left: 3px;
+		opacity: 0.6;
+			}
+		}
+		small{			
+			text-transform: none;
+		}
+		.activeFilters{
+			&.box-panel{
+				padding-bottom: 5px;
+			}
+			.row{
+				margin-left: -20px;
+			}
+			.span4 {
+				font-size:13px;
+				width: 354px;
+				margin-bottom: 10px;
+				padding: 5px;
+				background:  lighten($grayLighter,3%);
+			border: 1px solid #dddddd;
+				margin-left: 20px;
+				span{
+					float: left;
+				}
+				a{
+					float: right;
+				}
+			}
+		}
+		.activeFiltersEdit{
+			margin-top: -10px;
+			
+			h3{
+				text-transform: none;
+				margin-bottom: 15px;
+			}
+			.span4{
+				min-height: 40px;
+			}
+			.dropdown{
+				width: 99%;
+			}
+			.form-horizontal .control-label{
+				width: 140px;
+				font-size: 13px;
+			}
+			.form-horizontal .controls {
+				margin-left: 150px;
+			}
+			.span3{
+				 width: 290px;
+				 .control-label{
+				 	width: 28%;
+				 }
+				 .controls{
+				 	margin-left: 30%;
+				 }
+				 input[type="text"]{
+				 	width: 93%;
+				 }
+			}
+			.span2 {
+				width: 145px;
+			}
+		}
+	
+}

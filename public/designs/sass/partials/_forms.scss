@@ -148,3 +148,27 @@ form{
 			  }
 			}		
 }	
+
+
+
+/********* ********* *********/
+/********* Search Box CSS *********/
+/********* ********* *********/
+
+.searchBox{
+	position: relative;
+	.searchField{
+		width: 90%;
+		padding-right: 30px ;
+	}
+	.searchBtn{
+		position: absolute !important ;
+	    right: 0px;
+		top: 2px;
+	    width: 33px;
+	    height: 28px;
+	    border: none;
+	    outline: none !important;    
+	    background: url(../../images/admin/layout/icn-search-lens.png) no-repeat 100% 50%;
+	}
+}

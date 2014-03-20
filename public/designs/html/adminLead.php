@@ -6,11 +6,11 @@
 	<!-- //header -->
 	<!-- Main container -->
 	<div class="container">
-		<div class="row grid20 customerPart js-customerPart">
+		<div class="row  customerPart js-customerPart">
 			<form>
 				<div class="span9">
 					<div class="row grid10">
-						<div class="span2">
+						<div class="span2 imgContainer">
 							<div class="control-group">
 								<div class="controls">
 									<img src="../../images/admin/pages/avatar.jpg" class="customerImg" />
@@ -45,43 +45,44 @@
 				</div>
 				<div class="span3">
 					<div class="control-group">
-						<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
-						<ul class="pull-right">
-							<li>
-								<label>Cell:</label>
-								<!-- 	<input type="text" id="inputCell" value="23456789" class="input-small"> -->
+							<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
+					<!-- 		<a class="btn  btnEditSave  " href="#"><i class="icon-save"></i></a> -->
+							<ul class="pull-right">
+								<li>
+									<label>Cell:</label>
+									<!-- <input type="text" id="inputCell" value="23456789" class="input-small"> -->
 								<p>
-									123456789
-								</p>
-							</li>
-							<li>
-								<label>Home:</label>
-								<!-- <input type="text" id="inputHome" value="23456789" class="input-small"> -->
+										123456789
+									</p>
+								</li>
+								<li>
+									<label>Home:</label>
+									<!-- <input type="text" id="inputHome" value="23456789" class="input-small"> -->
 								<p>
-									123456789
-								</p>
-							</li>
-							<li>
-								<label>Work:</label>
-								<!-- <input type="text" id="inputWork" value="23456789" class="input-small"> -->
-								<p>
-									123456789
-								</p>
-							</li>
-							<li>
-								<label>Fax:</label>
-								<!-- <input type="text" id="inputFax" value="23456789" class="input-small"> -->
-								<p>
-									123456789
-								</p>
-							</li>
-						</ul>
-					</div>
+										123456789
+									</p>
+								</li>
+								<li>
+									<label>Work:</label>
+								<!-- 	<input type="text" id="inputWork" value="23456789" class="input-small"> -->
+									<p>
+										123456789
+									</p>
+								</li>
+								<li>
+									<label>Fax:</label>
+									<!-- <input type="text" id="inputFax" value="23456789" class="input-small"> -->
+									<p>
+										123456789
+									</p>
+								</li>
+							</ul>
+						</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="span12">
 					<div class="form-horizontal row">
-						<div class="span8">
+						<div class="span3">
 							<div class="control-group">
 								<label class="control-label" for="inputStreet">Street:</label>
 								<div class="controls">
@@ -91,17 +92,14 @@
 									<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
 								</div>
 								<!-- 	<div class="controls">
-								<input type="text" id="inputStreet" value="99 spicer DR" class="input-xxlarge">
+								<input type="text" id="inputStreet" value="99 spicer DR" >
 								<a class="btn  btnEditSave " href="#"><i class="icon-save"></i></a>
 								<span class="help-block js-error hidden">can't be blank</span>
 								</div> -->
 							</div>
 						</div>
-						<div class="clearfix"></div>
-						<div class="span12">
-							<div class="row-fluid">
-								<div class="span4">
-									<div class="control-group">
+						<div class="span3">
+								<div class="control-group">
 										<label class="control-label" for="inputCity">City:</label>
 										<div class="controls">
 											<p>
@@ -115,43 +113,8 @@
 										<span class="help-block js-error hidden">can't be blank</span>
 										</div> -->
 									</div>
-								</div>
-								<div class="span4">
-									<div class="control-group">
-										<label class="control-label" for="inputState">State:</label>
-										<div class="controls">
-											<p>
-												Pennsylvania
-											</p>
-											<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
-										</div>
-										<!-- <div class="controls">
-										<input type="text" id="inputState" value="Pennsylvania" >
-										<a class="btn  btnEditSave" href="#"><i class="icon-save"></i></a>
-										<span class="help-block js-error hidden">can't be blank</span>
-										</div> -->
-									</div>
-								</div>
-								<div class="span4">
-									<div class="control-group">
-										<label class="control-label" for="inputZip">Zip:</label>
-										<div class="controls">
-											<p>
-												55555
-											</p>
-											<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
-										</div>
-										<!-- <div class="controls">
-										<input type="text" id="inputZip" value="55555" >
-										<a class="btn  btnEditSave " href="#"><i class="icon-save"></i></a>
-										<span class="help-block js-error hidden">can't be blank</span>
-										</div> -->
-									</div>
-								</div>
-							</div>
 						</div>
-						<div class="clearfix"></div>
-						<div class="span4">
+						<div class="span3">
 							<div class="control-group">
 								<label class="control-label" for="inputCountry">Country:</label>
 								<div class="controls">
@@ -167,9 +130,42 @@
 								</div> -->
 							</div>
 						</div>
+						<div class="span2">
+							<div class="control-group">
+										<label class="control-label" for="inputState">State:</label>
+										<div class="controls">
+											<p>
+												Pennsylvania
+											</p>
+											<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
+										</div>
+										<!-- <div class="controls">
+										<input type="text" id="inputState" value="Pennsylvania" class="input-small">
+										<a class="btn  btnEditSave" href="#"><i class="icon-save"></i></a>
+										<span class="help-block js-error hidden">can't be blank</span>
+										</div> -->
+									</div>
+						</div>
+						<div class="span1">
+							<div class="control-group">
+										<label class="control-label" for="inputZip">Zip:</label>
+										<div class="controls">
+											<p>
+												55555
+											</p>
+											<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
+										</div>
+										<!-- <div class="controls">
+										<input type="text" id="inputZip" value="55555" class="input-mini">
+										<a class="btn  btnEditSave " href="#"><i class="icon-save"></i></a>
+										<span class="help-block js-error hidden">can't be blank</span>
+										</div> -->
+									</div>
+						</div>
 					</div>
 				</div>
 			</form>
+			
 		</div>
 		<hr class="grid30"/>
 		<!-- Contact Request -->

@@ -1,11 +1,12 @@
 class User
-  attr_accessor :first_name, :last_name, :email, :id
+  attr_accessor :first_name, :last_name, :email, :id, :avatar
 
   def initialize(first_name, last_name, email, id)
     @id = id
     @first_name = first_name
     @last_name = last_name
     @email = email
+    @avatar = Avatar.new
   end
 
   def name 
@@ -20,5 +21,11 @@ class User
 
   def self.find(id)
     User.all.select{|user| user.id == id}.first
+  end
+
+  class Avatar
+    def url(size)
+      'er_crm/pages/avatar.jpg'
+    end
   end
 end

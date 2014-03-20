@@ -1,8 +1,55 @@
 .adminLead{
+	
 	h2,h4{
 		margin-top: 0;
 	}
 	.customerPart{
+		.form-horizontal{
+			margin-left: -20px;
+			[class*="span"] {
+				margin-left: 20px;
+			}
+			.span3{
+				width: 260px;
+				.control-label {
+					
+					width: 60px;
+				}
+				 .controls {
+					input{
+						width: 157px;
+					}
+				}
+			}
+			.span2 {
+				width: 190px;
+				.input-small {
+					width: 107px;
+				}
+			}
+			.span1 {
+				width: 120px;
+				.input-mini {
+					width: 53px;
+				}
+			}
+			
+			.control-label {
+				width: auto;
+				text-align: left;
+				
+			}
+			 .controls {
+				margin-left: 4px;
+				float: left;				
+			}
+			p{
+					margin-bottom: 0;
+				padding-top: 5px;
+				padding-right: 26px;
+			}	
+			
+		}
 		.span3 .control-group {
 			overflow: hidden;
 		}
@@ -33,7 +80,7 @@
 			height: 20px;
 			line-height: 20px;
 			position: absolute;
-			top: 0px;
+			top: 5px;
 			right: 0px;
 			background: #E4E4E4;
 			border: 1px solid #CACACA;
@@ -46,23 +93,8 @@
 			}	
 	}	
 	
-	.form-horizontal{
-		.control-label{
-			width: 135px;
-		}
-		.controls {
-			margin-left: 145px;
-			input{
-				width: 185px;
-			}
-			.input-xxlarge {
-			width: 530px;
-			}			
-		}
-		p{
-			padding-top: 5px;
-		}
-	}
+
+	
 	.contactRequest{
 		.otherLeads{
 			font-size: 12px;
@@ -122,4 +154,11 @@
 			}
 		}
 	}
+	
+	.imgContainer{
+		width: 104px;
+	}
+	
+	
+		
 }

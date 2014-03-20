@@ -1,61 +1,18 @@
-<!-- <p id="notice"><%= notice %></p>
-
-<p>
-  <b>ID:</b> 
-  <%= @customer.id %>
-</p>
-<p>
-  <b>Email:</b>
-  <a href="mailto:<%= @customer.email %>"><%= @customer.email %></a>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @customer.name %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @customer.phone %>
-</p>
-
-<p>
-  <b>Source:</b>
-  <%= @customer.source.try(:name) %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @customer.country.try(:name) %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @customer.address_line %>
-</p>
-
-<p>
-  <b>Owner User:</b>
-  <%= @customer.owner_user.try(:name) %>
-</p>
-
-<p>
-  <b>Customer user:</b>
-  <%= @customer.user.try(:name) %>
-</p>
- -->
-
 <% @body_class = 'adminLead costmerPage' %>
 
 <div class="container">
-  <div class="row grid20 customerPart">
+  <div class="row grid20 customerPart js-customerPart">
     <form>
       <div class="span9">
         <div class="row grid10">
           <div class="span2">
             <div class="control-group">
               <div class="controls">
-                <img src="../../images/admin/pages/avatar.jpg" class="customerImg" />
+                <% if @customer.customer_user_id %>
+                  <img src="<%= @customer.user.avatar.url(:size100) %>" class="customerImg" />
+                <% else %>
+                  <img src="<%= image_path('er_crm/pages/avatar.jpg') %>" class="customerImg" />
+                <% end %>
               </div>
             </div>
           </div>
@@ -76,28 +33,28 @@
       <div class="span3">
         <div class="control-group">
           <ul class="pull-right">
-            <li>
+            <li style="<%= 'display:none' if @customer.mobile_number.blank? %>">
               <label>Cell:</label>
               <p>
-                123456789
+                <%= @customer.mobile_number %>
               </p>
             </li>
-            <li>
+            <li style="<%= 'display:none' if @customer.home_phone.blank? %>">
               <label>Home:</label>
               <p>
-                123456789
+                <%= @customer.home_phone %>
               </p>
             </li>
-            <li>
+            <li style="<%= 'display:none' if @customer.work_phone.blank? %>">
               <label>Work:</label>
               <p>
-                123456789
+                <%= @customer.work_phone %>
               </p>
             </li>
-            <li>
+            <li style="<%= 'display:none' if @customer.fax_number.blank? %>">
               <label>Fax:</label>
               <p>
-                123456789
+                <%= @customer.fax_number %>
               </p>
             </li>
           </ul>
@@ -106,62 +63,65 @@
       <div class="clearfix"></div>
       <div class="span12">
         <div class="form-horizontal row">
-          <div class="span8">
+          <div class="span3">
             <div class="control-group">
               <label class="control-label" for="inputStreet">Street:</label>
               <div class="controls">
+                <span class="js-edit street_address">
+                  <p class="field_value"><%= @customer.street_address %></p>
+                  <a class="btn btnEditSave js-btnEditSave hidden icn-edit" href="#"><i class="icon-pencil"></i></a>
+                  <div class="success_msg hidden" style="color:green"></div>
+                  <input type="hidden" name="customer[street_addtess]" value="<%= @customer.street_address %>" />
+                </span>
+                
+                <span class="js-upload hidden">
+                  <input type="text" id="inputName" value="<%= @customer.street_address %>">
+                  <span class="help-block js-error hidden"></span>
+                  <a class="btn btnEditSave icn-save street_address" href="#"><i class="icon-save"></i></a>
+                </span>              
+              </div>
+            </div>
+          </div>
+          <div class="span3">
+            <div class="control-group">
+              <label class="control-label" for="inputCity">City:</label>
+              <div class="controls">
                 <p>
-                  <%= @customer.street_address %>
+                  <%= @customer.city %>
                 </p>              
               </div>
             </div>
           </div>
-          <div class="clearfix"></div>
-          <div class="span12">
-            <div class="row-fluid">
-              <div class="span4">
-                <div class="control-group">
-                  <label class="control-label" for="inputCity">City:</label>
-                  <div class="controls">
-                    <p>
-                      <%= @customer.city %>
-                    </p>              
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="control-group">
-                  <label class="control-label" for="inputState">State:</label>
-                  <div class="controls">
-                    <p>
-                      <%= @customer.region.try(:name) %>
-                    </p>                
-                  </div>
-                </div>
-              </div>
-              <div class="span4">
-                <div class="control-group">
-                  <label class="control-label" for="inputZip">Zip:</label>
-                  <div class="controls">
-                    <p>
-                      <%= @customer.zip_code %>
-                    </p>                  
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-          <div class="span4">
+          <div class="span3">
             <div class="control-group">
               <label class="control-label" for="inputCountry">Country:</label>
               <div class="controls">
                 <p>
                  <%= @customer.country.name %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="span2">
+            <div class="control-group">
+              <label class="control-label" for="inputState">State:</label>
+              <div class="controls">
+                <p>
+                  <%= @customer.region.try(:name) %>
                 </p>                
               </div>
             </div>
           </div>
+          <div class="span1">
+            <div class="control-group">
+              <label class="control-label" for="inputZip">Zip:</label>
+              <div class="controls">
+                <p>
+                  <%= @customer.zip_code %>
+                </p>                  
+              </div>
+            </div>
+          </div>         
         </div>
       </div>
     </form>
@@ -169,16 +129,20 @@
 
   <hr class="grid40"/>
 
+  <% open_leads = ErCrm::Lead.open_of_customer(@customer.id) 
+     closed_leads = ErCrm::Lead.closed_of_customer(@customer.id)
+     sold_leads = ErCrm::Lead.sold_of_customer(@customer.id) %>
   <div class="row grid10">
     <div class="span6">
-      <h2 class="darker">Open Leads</h2>
+      <% if open_leads.length > 0 %> <h2 class="darker">Open Leads</h2> <% end %>
     </div>
     <div class="span6">
       <a href="<%= new_lead_path(:customer_id => @customer.id) %>" class="btn-highlight pull-right small">New Lead</a>
     </div>
   </div>
 
-  <% @customer.leads.each do |lead| %>
+
+  <% open_leads.each do |lead| %>
     <div class="row-fluid  grid20 contactRequest">
       <div class="box-panel">
         <div class="span8">
@@ -195,14 +159,136 @@
     </div>
   <% end %>
   <div class="clearfix grid20"></div>
-  <!-- // faild booking -->
-  
-  <div class="row">
-    <div class="span6">
-      <a href="#" >Show Closed Leads (5)</a>
+
+  <div class="js-closedLeads" style="display:none;">
+    <div class="row grid10">
+      <div class="span6">
+        <h2 class="darker">closed Leads</h2>
+      </div>
     </div>
-    <div class="span6">
-      <a href="#" class="pull-right">Show Closed Leads (2)</a>
+
+    <% closed_leads.each do |lead| %>
+      <div class="row-fluid  grid20 contactRequest">
+        <div class="box-panel">
+          <div class="span8">
+            <h3 class="orange"><%= lead.department.lead_category.name %> 
+              <small><%= lead.lead_type.name %></small>
+            </h3>
+          </div>
+          <div class="span4 align-right lighter">
+            <small><%= lead.created_at.strftime("%d/%M/%Y %l:%M %p") %> created by <i><%= lead.owner_user.name %></i></small>
+          </div>
+          <div class="clearfix"></div>
+          <div class="align-center"><a href="<%= lead_path(lead) %>" class="btn-dark pull-right small">View Lead</a></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="js-soldLeads" style="display:none;">
+    <div class="row grid10">
+      <div class="span6">
+        <h2 class="darker">Sold Leads</h2>
+      </div>
+    </div>
+
+    <% sold_leads.each do |lead| %>
+      <div class="row-fluid  grid20 contactRequest">
+        <div class="box-panel">
+          <div class="span8">
+            <h3 class="orange"><%= lead.department.lead_category.name %> 
+              <small><%= lead.lead_type.name %></small>
+            </h3>
+          </div>
+          <div class="span4 align-right lighter">
+            <small><%= lead.created_at.strftime("%d/%M/%Y %l:%M %p") %> created by <i><%= lead.owner_user.name %></i></small>
+          </div>
+          <div class="clearfix"></div>
+          <div class="align-center"><a href="<%= lead_path(lead) %>" class="btn-dark pull-right small">View Lead</a></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+    
+  <div class="row">
+    <div class="span6" style="<%= 'display:none' if closed_leads.length == 0 %>">
+      <a class="js-closedLeadsTrigger" href="javascript:;" >
+        Show Closed Leads (<%= closed_leads.length %>)
+      </a>
+    </div>
+    <div class="span6" style="<%= 'display:none' if sold_leads.length == 0 %>">
+      <a class="js-soldLeadsTrigger" href="javascript:;" class="pull-right">Show Closed Leads (<%= sold_leads.length %>)</a>
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $(".js-closedLeadsTrigger").click(function(){
+      $(".js-closedLeads").toggle();
+      $('html, body').animate({
+        scrollTop: $(".js-closedLeads").offset().top}, 500);
+      toggleAnchorText($(this))
+    })
+
+    $(".js-soldLeadsTrigger").click(function(){
+      $(".js-soldLeads").toggle();
+      $('html, body').animate({
+        scrollTop: $(".js-soldLeads").offset().top}, 500);
+      toggleAnchorText($(this))
+    })
+
+  })
+
+  function toggleAnchorText(anchor){
+    text = anchor.text();
+    if (text.indexOf("Show") > -1)
+      text = text.replace("Show", "Hide")
+    else if (text.indexOf("Hide") > -1)
+      text = text.replace("Hide", "Show")
+
+    anchor.text(text)
+  }
+</script>
+
+<script>
+  $(document).ready(function(){
+    showHidePensBtn()
+
+    $(".icn-edit").click(function(e){
+      e.preventDefault();
+      var target = $(this);
+      var parent = target.parent("span.js-edit");
+      parent.find(".success_msg").addClass("hidden")
+      var element_to_show = parent.next("span.js-upload");
+      parent.addClass("hidden");
+      element_to_show.removeClass("hidden");
+    })
+
+    $(".icn-save").click(function(e){
+      e.preventDefault();
+      var target = $(this);
+      var text_field = target.siblings("input[type=text]");
+
+      $.ajax({
+        url: "<%= update_single_attribute_customer_path(@customer.id) %>",
+        type: 'post',
+        data: {
+          authenticity_token: '<%= form_authenticity_token %>',
+          attribute_name: target.attr("class").match(/[^ ]*$/)[0],
+          attribute_value: text_field.val()
+        },
+        
+        success: function(response){
+          //js.erb template rendered
+        },
+        error: function(xhr, status, error){
+          var error_message_div = target.siblings("span");
+          error_message_div.html(xhr.responseText);
+          error_message_div.removeClass("hidden");
+        }
+      });
+
+    })
+  })
+</script>
