@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>EagleRider CRM</title>
-  <%= stylesheet_link_tag    "er_crm/application", :media => "all" %>
-  <%= javascript_include_tag "er_crm/application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+<!doctype html> <!--[if IE 7]><html lang="en" class="ie ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="ie ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie ie9"><![endif]-->
+<!--[!(IE)]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <head>
+    <%= render partial: 'layouts/er_crm/header' %>
+  </head>
+  <body class="<%= @body_class %>">    
+    <%= render partial: 'layouts/er_crm/navigation' %>
+    <%= yield %>
+  </body>
 </html>

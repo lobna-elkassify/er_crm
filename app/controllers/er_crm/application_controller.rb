@@ -1,4 +1,4 @@
-class ErCrm::ApplicationController < ApplicationController
-#Use the definition below if the engine is run standalone within the dummy folder
-#class ApplicationController < ActionController::Base
+class ErCrm::ApplicationController < ApplicationController  
+  #uncoment the line below if the engine is running as a standalone app
+  helper TestHelper
 end

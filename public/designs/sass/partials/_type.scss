@@ -1,0 +1,56 @@
+/* =============================================================================
+   type
+   ========================================================================== */
+
+$type_paragraph_default: 13px;
+
+// throughout the website, hover and focus states are the same
+.reg {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a {
+  outline: none;
+ // color: $clr_brand;
+  text-decoration: none;
+  &:active { outline: none; }
+  &:focus { outline: none; }
+  &:hover, &:focus { text-decoration: underline; }
+}
+
+p{
+color: lighten($gray,4%) ;
+}
+
+// %hX are Sass placeholders that can be extended on other elements
+h1, h2, h3,h4,
+.h1, .h2, .h3,.h4
+%h1, %h2, %h3,%h4 {
+
+	margin:15px 0 20px;
+  font-weight: normal;
+ 
+}
+
+h1, .h1, %h1 {
+  color: $grayDark;
+  
+}
+h2, .h2, %h2 {
+  color: $orange;
+}
+
+h3, .h3, %h3 ,h4{
+ 	color: $grayDark;
+}
+
+// used to minimic the <strong> and <em> tags for SEO purposes
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.align-right { text-align: right; }
+.align-center { text-align: center; }
+.caps { text-transform: uppercase; }
+.highlighted { color: white !important; }
+.orange{color: $orange;}
+.lighter{ color: $grayLight;}
+.darker{color: $grayDark;}
+

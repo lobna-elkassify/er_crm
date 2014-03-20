@@ -1,0 +1,125 @@
+.adminLead{
+	h2,h4{
+		margin-top: 0;
+	}
+	.customerPart{
+		.span3 .control-group {
+			overflow: hidden;
+		}
+		ul{
+			text-align:right;
+			list-style: none;
+			margin-right: 26px;
+			li{
+				list-style: none;
+			}
+			label{
+				display: inline-block;
+				margin-right: 3px;
+			}
+			p{
+				display: inline-block;
+				margin-bottom: 0;
+			}
+		}
+		.customerImg{
+			height: 100px;
+			border: 1px solid lighten($lightGrey,10%);
+		}
+		.btnEditSave{
+			border-radius: 44px;
+			padding: 0;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			background: #E4E4E4;
+			border: 1px solid #CACACA;
+			&:hover{
+				opacity: 0.85;
+			}
+		}
+		.input-small {
+				margin-bottom: 3px;
+			}	
+	}	
+	
+	.form-horizontal{
+		.control-label{
+			width: 135px;
+		}
+		.controls {
+			margin-left: 145px;
+			input{
+				width: 185px;
+			}
+			.input-xxlarge {
+			width: 530px;
+			}			
+		}
+		p{
+			padding-top: 5px;
+		}
+	}
+	.contactRequest{
+		.otherLeads{
+			font-size: 12px;
+			label{
+				font-weight: bold;
+				font-size: 12px;
+				display: inline-block;
+			}
+			span{
+				margin: 0 15px 0 10px;
+			}
+		}
+	}
+	.infoPart{
+		input[type="text"]{
+			width: 89%;
+		}
+		textarea{
+			width: 99%;
+		}
+		.dateDiv{
+			input{
+			width: 80% !important;
+			}			
+		}
+		.btn-highlight{
+			margin-top: 10px;
+		}
+	}
+
+	
+	.activityLog{
+		margin-top: 50px;
+		h4 {
+			margin-bottom: 5px;
+			text-transform: none;
+			font-weight: bold;
+			font-size: 13px;
+			small{
+				font-size: 12px;
+			}
+		}
+		ul{
+			li{
+				margin-bottom: 2px;
+			}
+			font-size:12px;
+			padding:10px;
+			background:  lighten($grayLighter,2%);
+			border: 1px solid #dddddd;
+			list-style: none;
+			margin-left: 0;
+			color: $gray;
+			 span {
+				background: darken($grayLighter,5%);
+				padding: 0 2px;
+			}
+		}
+	}
+}

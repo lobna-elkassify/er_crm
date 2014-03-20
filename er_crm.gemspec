@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
   s.description = "Eaglerider CRM System."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "er_crm.gemspec"] - 
-            ["app/models/user.rb", "app/models/region.rb", "app/models/country.rb", "app/models/reservation.rb", "app/models/devise.rb"]
+            ["app/models/user.rb", "app/models/region.rb", "app/models/country.rb", "app/models/reservation.rb", 
+             "app/models/devise.rb", "app/helpers/test_helper.rb"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency 'rails', '3.2.14'

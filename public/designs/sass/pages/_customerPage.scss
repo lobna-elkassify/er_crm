@@ -1,0 +1,14 @@
+.costmerPage{
+	h3{
+		margin: 0 0 5px 0;
+	}
+	.box-panel{
+		overflow: hidden;
+	}
+	.btn-dark{
+		&.small{
+			float: none;
+			text-transform: none;
+		}
+	}
+}

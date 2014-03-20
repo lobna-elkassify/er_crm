@@ -1,0 +1,293 @@
+@import '../components/dropdown/mixins';
+
+/********* ********* *********/
+/********* Header Style *********/
+/********* ********* *********/
+header {
+	position:relative;
+	z-index:1000;
+	margin-bottom: 40px;
+	@include gradient-vertical($startColor: #3A3A3A, $endColor: #414141);
+	height: 63px;
+	border-bottom: 5px solid $orange;
+	.container {
+		padding-top: 7px;
+		
+		.logo{
+			img{
+				width: 88px;
+			}
+		}
+	}
+	.user_bar {
+	//width: 170px;
+	height: 40px;
+	padding: 5px 8px 2px 13px;
+	position: relative;
+	float: right;
+	background:lighten($grayDarker ,2%);
+	color: $white;
+  margin-top:1px;
+  
+  &:hover{
+  	background: $grayDarker;
+  }
+	span{
+		color: $lightGrey;
+		display: block;
+		//width: 95px;
+		line-height:1.2em;
+	}
+	.username{color: $lightGrey*1.5; line-height: 37px;float: left;}
+	.avatar {
+		float: right;
+		margin-right: 23px;
+		margin-top: 5px;
+		width: 24px;
+		margin-left: 15px;
+	}
+	.dropdown {
+		.caret {
+			position: absolute;
+	    right: 3px;
+	    top: 9px;
+	    border-left: 6px solid transparent;
+  		border-right: 6px solid transparent;
+	    border-top: 6px solid $lightGrey;
+		}
+	}
+	.dropdown-toggle {
+		display: block;
+		outline: none;
+		text-decoration: none;
+	}
+	.dropdown-menu {
+		min-width: 70px;
+		width: 160px;
+		right: -8px;
+		top: 40px;
+		background-color: $grayDark;
+		border: none;
+		border-top: 1px solid #444;
+		z-index: 99999;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;
+		a {
+			border-bottom: 1px solid #444;
+			color: $white;
+			font-weight: bold;
+			&:hover {
+				color: $darkGrey;
+				background-color: $white;
+			}
+		}
+	}
+  }  
+}
+.container{
+	padding-bottom: 30px;
+}
+hr{
+	border-top: 1px solid lighten($lightGrey,7%);
+}
+/********* ********* *********/
+/********* Separation class *********/
+/********* ********* *********/
+.grid10{
+	margin-bottom: 10px;
+}
+
+.grid20{
+	margin-bottom: 20px;
+}
+.grid30{
+	margin-bottom: 30px;
+}
+.grid40{
+	margin-bottom: 40px;
+}
+
+.box-panel {
+	border: 1px solid  lighten($lightGrey,7%);
+	padding:15px;
+}
+
+/********* ********* *********/
+/********* Buttons *********/
+/********* ********* *********/
+
+
+/***  btn-highlight == Orange BTN  ***/
+/***  btn-darkHighlight == Brown BTN  ***/
+/***  btn-dark == Gray BTN  ***/
+/***  btn-light == White BTN  ***/
+
+
+.btn-highlight, .btn-darkHighlight, .btn-dark  {
+	width: auto;
+	float: right;
+	margin:0;
+	border: none;
+	display: block;
+	color: $white;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: $headerFont;
+	font-size: 18px;
+	font-weight:600;
+	padding: 0 20px;
+	line-height: 2em;
+	position:relative;
+	background: $orange;
+	display: inline-flex;
+	@include transition(all 0.3s ease-in-out);
+	&:hover {
+		color:$white;
+		text-decoration: none;
+		background: $linkHover;
+		.btn-decor{
+			background-color: $linkHover;
+		}
+		.icn-arrowWhiteRight{
+			left:5px;
+		}
+		.icn-arrowBrownRight{
+			left:0;
+		}
+		.icn-arrowWhiteLeft {
+			left: -5px;
+		}
+		&.small{
+			.icn-arrowBrownRight{left:-5px;}
+		}
+	}
+}
+
+.btn-darkHighlight {
+	background: $darkOrange;
+	.btn-decor{
+		background:$darkOrange !important;
+	}
+	&:hover {
+		background-color: $linkHover;
+		.btn-decor{
+			background: $linkHover !important;
+		}
+	}
+}
+
+.btn-dark {
+	background: $specBtnBg;
+	&:hover {
+		background-color: $specBtnBg * 1.5;
+	}
+}
+
+.btn-light{
+	background: $white;
+	width: 20px;
+	height: 38px;
+	line-height:38px;
+	text-align:center;
+	vertical-align:middle;
+	font-family: $headerFont;
+	color: $orange;
+	font-size: 16px;
+	font-weight: bold;
+	padding:0 14px;
+	color: $orange;
+	text-transform: uppercase;
+	@include transition(all 0.3s ease-in-out);
+	&:hover{
+		width:135px;
+		color: $orange;
+		text-decoration:none;
+	}
+}
+
+
+
+.btn-highlight, .btn-darkHighlight, .btn-light, .btn-dark{
+
+	&.small{
+		font-size: 15px;
+		//line-height: 1.4em;
+		padding: 0 10px;
+		.icn-arrowWhiteRight{
+			background: url('../../images/admin/layout/btn_arrows.png') 0 -20px no-repeat;
+			margin: 5px 0 0 10px;
+		}
+		.icn-arrowBrownRight{
+			background: url('../../images/admin/layout/btn_arrows.png') -20px -20px no-repeat;
+			margin:1px 8px 0 0;
+			left:0;
+		}
+	}
+	.icn-arrowOrangeDown{
+		width:20px;
+		height:20px;
+		float:left;
+		background: url('../../images/admin/layout/btn_arrows.png') 0 0 no-repeat;
+		margin:9px 15px 0 0;
+	}
+	.icn-arrowWhiteRight, .icn-arrowBrownRight{
+		display:inline-block;
+		position:relative;
+		left:0;
+		float:right;
+		width:20px;
+		height:20px;
+		vertical-align:middle;
+		background: url('../../images/admin/layout/btn_arrows.png') -20px 0 no-repeat;
+		margin:0.4em 0 0 10px;
+		@include transition(all 0.3s ease-in-out);
+	}
+	.icn-arrowWhiteLeft {
+			display:inline-block;
+			position:relative;
+			float: left;
+			margin-left: 0;
+			margin:0.4em 10px 0 0;
+			background: url('../../images/admin/layout/btn_arrows.png') -62px 0   no-repeat;
+			width: 20px;
+			height: 20px;
+			@include transition(all 0.3s ease-in-out);
+	}
+		
+	.icn-arrowBrownRight{
+		background-position: -60px 0;
+		left:5px;
+	}
+	.btn-decor{
+		display:block;
+		height:2em;
+		width:20px;
+		background:$orange;
+		position:absolute;
+		bottom:0;
+		left:-10px;
+		@include skew(30deg, 0);
+		-webkit-backface-visibility: visible;
+		@include transition(all 0.3s ease-in-out);
+	}
+
+}
+/********* ********* *********/
+/********* icons class *********/
+/********* ********* *********/
+
+.icon-save{	
+	width: 12px;
+	height: 12px;
+	line-height: 12px;
+	background: url("../../images/admin/layout/icn-save.png") no-repeat;
+	margin-top: 2px;
+}
+.icn-Calendar{
+	background: url(../../images/rentals/layout/Calendar_icon.png) 0 0 no-repeat;
+	width: 21px;
+	height: 19px;
+	float: right;
+	margin-top: 5px;
+	display: inline-block;
+}

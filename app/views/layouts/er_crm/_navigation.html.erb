@@ -1,0 +1,30 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <a href="<%= ErCrm::Engine.routes.url_helpers.root_path %>" class="logo">
+          <img src="<%= image_path('er_crm/layout/logo.png') %>">
+        </a>
+      </div>
+      <div class="span9 ">
+        <div class="user_bar">
+          <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+              <img src="<%= image_path('er_crm/layout/user.png') %>" class="avatar"/> 
+              <span class="username"><%= current_user.name %></span> 
+              <b class="caret"></b> 
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li>
+                <a href="<%= user_personal_information_path %>" title="">My Account</a>
+              </li>
+              <li>
+                <a href="<%= destroy_user_session_path %>" title="">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -28,21 +28,21 @@ module ErCrm
       end
 
       #Uncoment these lines if the enngine is run from the dummy hosting app
-        # def region
-        #   Region.find(region_id)
-        # end
+        def region
+          Region.find(region_id)
+        end
 
-        # def country
-        #   Country.find(country_id)
-        # end
+        def country
+          Country.find(country_id)
+        end
 
-        # def owner_user
-        #   User.find(created_by_user_id)
-        # end
+        def owner_user
+          User.find(created_by_user_id)
+        end
 
-        # def user
-        #   User.find(customer_user_id)
-        # end
+        def user
+          User.find(customer_user_id)
+        end
       #-----
     #-----
   end

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <b>ID:</b> 
@@ -43,3 +43,166 @@
   <b>Customer user:</b>
   <%= @customer.user.try(:name) %>
 </p>
+ -->
+
+<% @body_class = 'adminLead costmerPage' %>
+
+<div class="container">
+  <div class="row grid20 customerPart">
+    <form>
+      <div class="span9">
+        <div class="row grid10">
+          <div class="span2">
+            <div class="control-group">
+              <div class="controls">
+                <img src="../../images/admin/pages/avatar.jpg" class="customerImg" />
+              </div>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="control-group">
+              <div class="controls">
+                <h2><%= @customer.name %></h2>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <a href="mailto:<%= @customer.email %>"><%= @customer.email %></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="control-group">
+          <ul class="pull-right">
+            <li>
+              <label>Cell:</label>
+              <p>
+                123456789
+              </p>
+            </li>
+            <li>
+              <label>Home:</label>
+              <p>
+                123456789
+              </p>
+            </li>
+            <li>
+              <label>Work:</label>
+              <p>
+                123456789
+              </p>
+            </li>
+            <li>
+              <label>Fax:</label>
+              <p>
+                123456789
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="span12">
+        <div class="form-horizontal row">
+          <div class="span8">
+            <div class="control-group">
+              <label class="control-label" for="inputStreet">Street:</label>
+              <div class="controls">
+                <p>
+                  <%= @customer.street_address %>
+                </p>              
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="span12">
+            <div class="row-fluid">
+              <div class="span4">
+                <div class="control-group">
+                  <label class="control-label" for="inputCity">City:</label>
+                  <div class="controls">
+                    <p>
+                      <%= @customer.city %>
+                    </p>              
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="control-group">
+                  <label class="control-label" for="inputState">State:</label>
+                  <div class="controls">
+                    <p>
+                      <%= @customer.region.try(:name) %>
+                    </p>                
+                  </div>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="control-group">
+                  <label class="control-label" for="inputZip">Zip:</label>
+                  <div class="controls">
+                    <p>
+                      <%= @customer.zip_code %>
+                    </p>                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="span4">
+            <div class="control-group">
+              <label class="control-label" for="inputCountry">Country:</label>
+              <div class="controls">
+                <p>
+                 <%= @customer.country.name %>
+                </p>                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <hr class="grid40"/>
+
+  <div class="row grid10">
+    <div class="span6">
+      <h2 class="darker">Open Leads</h2>
+    </div>
+    <div class="span6">
+      <a href="<%= new_lead_path(:customer_id => @customer.id) %>" class="btn-highlight pull-right small">New Lead</a>
+    </div>
+  </div>
+
+  <% @customer.leads.each do |lead| %>
+    <div class="row-fluid  grid20 contactRequest">
+      <div class="box-panel">
+        <div class="span8">
+          <h3 class="orange"><%= lead.department.lead_category.name %> 
+            <small><%= lead.lead_type.name %></small>
+          </h3>
+        </div>
+        <div class="span4 align-right lighter">
+          <small><%= lead.created_at.strftime("%d/%M/%Y %l:%M %p") %> created by <i><%= lead.owner_user.name %></i></small>
+        </div>
+        <div class="clearfix"></div>
+        <div class="align-center"><a href="<%= lead_path(lead) %>" class="btn-dark pull-right small">View Lead</a></div>
+      </div>
+    </div>
+  <% end %>
+  <div class="clearfix grid20"></div>
+  <!-- // faild booking -->
+  
+  <div class="row">
+    <div class="span6">
+      <a href="#" >Show Closed Leads (5)</a>
+    </div>
+    <div class="span6">
+      <a href="#" class="pull-right">Show Closed Leads (2)</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+.form-horizontal {
+	 .control-group {
+		margin-bottom: 10px;
+	}
+	
+	.row-fluid{
+		.control-label{
+			//width: 23%;
+		}
+		.controls {
+		//	margin-left: 25%;
+			input{
+			//	width: 92%
+			}
+		}
+	}
+}
+
+.help-block{
+	color: $errorColor;
+	font-size: 11px;
+}
+
+
+form{
+	label{
+		font-weight: bold;
+	}
+	
+	input[type="text"], input[type="password"],textarea {
+		color: $gray;
+	//	width:90%;
+		margin-bottom: 0;
+		background-color:darken($white,2%);
+		border: 1px solid $grayLight;
+		-webkit-border-radius: 0px;
+		border-radius: 0px;
+		@include box-shadow(inset 2px 2px 2px 0  rgba(black, .2));
+		&:focus {
+			border-color: $focusBorder;
+			color: $focusBorder;
+		}
+	}
+	.radio{
+		line-height: 30px;
+		input[type="radio"]{
+			margin-top: 9px;
+		}
+	}
+	
+.dropdown {
+			  display: inline-block;
+			  position: relative;
+			 // overflow: hidden;
+			  height: 28px;
+			  width: 93%;
+			  background:$white;
+			  border: 1px solid;
+			  border-color: $grayLight;
+			  cursor:pointer;
+			  @include linear-gradient(top, transparent, rgba(black, .03));
+			  @include box-shadow(0 1px 1px rgba(black, .08));
+			  
+			  &:before, &:after {
+			    content: '';
+			    position: absolute;
+			    z-index: 2;
+			    top: 8px;
+			    right: 12px;
+			    width: 0;
+			    height: 0;
+			    border: 5px dashed;
+			    border-color: #888 transparent;
+			    pointer-events: none;
+			  }
+
+			  &:before {
+			    border-bottom-style: solid;
+			    border-top: none;
+			  }
+
+			  &:after {
+			    margin-top: 7px;
+			    border-top-style: solid;
+			    border-bottom: none;
+			  }
+			  
+			  &:hover {
+			  	@include linear-gradient(top, rgba(black, .06), transparent);
+			  	}
+			  .help-block{
+			  	padding: 12px 0 0;
+			  }
+			  &.disabledField{
+			  	opacity: 0.4;
+			  	&:hover {
+			  		 @include linear-gradient(top, transparent, rgba(black, .03));
+			  		
+			  	}
+			  	select:hover{
+			  		 color: #5b5b5b;
+			  	}
+			  }
+			 
+			}
+			.dropdown select {
+			  position: relative;
+			  cursor:pointer;
+			  width: 115%;
+			  margin: 0;
+			  padding: 5px 6px;
+			  height: 28px;
+			  line-height: 14px;
+			  font-size: 14px;
+			  font-weight:bold;
+			  color: $gray;
+			  text-shadow: 0 1px white;
+			  /* Fallback for IE 8 */
+			  background: #f2f2f2;
+			  /* "transparent" doesn't work with Opera */
+			  background: rgba(black, 0) !important;
+			  border: none !important;
+			  box-shadow: none;
+				text-shadow: none;
+				border: none;
+				border-radius: 0 0 0 0;
+			  -webkit-appearance: none;
+
+			  &:focus {
+			    z-index: 3;
+			    width: 120%;
+			    color: #394349;
+			    outline: none;
+			    border:none !important;
+			  }
+			  
+			  &:hover{color:#222;}
+
+			  > option {
+			    margin: 0;
+			    padding: 6px 8px;
+			    text-shadow: none;
+			    background: $white;
+			    border-radius: none;
+			    cursor: pointer;
+			    border-bottom:1px solid #f9f9f9;
+			    &:hover{background:$linkHover;}
+			  }
+			}		
+}	

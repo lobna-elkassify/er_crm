@@ -17,7 +17,8 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
   end
 
   def new
-    @lead = ErCrm::Lead.new
+    @lead = ErCrm::Lead.new()
+    @lead.customer_id = params[:customer_id] if params[:customer_id] 
     @lead.build_follow_up
 
     respond_to do |format|
