@@ -1,4 +1,3 @@
-<%= form_for(@lead) do |f| %>
   <% if @lead.errors.any? %>
     <div>
       <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
@@ -39,22 +38,4 @@
     <%= f.label :assigned_user %>
     <%= f.collection_select :assigned_user_id, User.all, :id, :name, {include_blank: true} %>
   </div>
-  <%= f.fields_for :follow_up do |follow_up_form| %> 
-    <div>
-      Follow up Date
-      <%= follow_up_form.datetime_select :datetime, {:start_year => Time.now.year, :end_year => Time.now.year + 3,
-                                                     :ampm => true, :minute_step => 30} %>
-    </div>
-    <div>
-      <%= follow_up_form.label :description, :style => "vertical-align: top" %>
-      <%= follow_up_form.text_area :description, :cols => 50, :rows => 5 %>
-    </div>
-  <% end %>
-  <div>
-    <%= f.label :comments, :style => "vertical-align: top" %>
-    <%= f.text_area :comments, :cols => 50, :rows => 5 %>
-  </div>
-  <div>
-    <%= f.submit "Submit" %>
-  </div>
-<% end %>
+  

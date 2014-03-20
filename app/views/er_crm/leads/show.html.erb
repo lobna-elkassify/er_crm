@@ -12,8 +12,8 @@
 
 <p>
   <b>Reservation:</b>
-  <%= #link_to @lead.reservation_id, "/"
-      link_to @lead.reservation_id, Rails.application.routes.url_helpers.activeadmin_reservation_path(@lead.reservation_id) unless @lead.reservation_id.nil?
+  <%= link_to @lead.reservation_id, "/"
+      #link_to @lead.reservation_id, Rails.application.routes.url_helpers.activeadmin_reservation_path(@lead.reservation_id) unless @lead.reservation_id.nil?
   %>
 </p>
 
@@ -51,3 +51,7 @@
   <b>Comments:</b>
   <%= @lead.comments %>
 </p>
+
+<% @lead.audits.each do |a| %>
+  <%= a.audited_changes %><br/>
+<% end %>

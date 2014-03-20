@@ -27,6 +27,7 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
 
   def edit
     @lead = ErCrm::Lead.find(params[:id])
+    @lead.build_follow_up if @lead.follow_up_id.nil?    
 
     respond_to do |format|
       format.html
@@ -66,6 +67,6 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
   def permitted_params
     params.require(:lead).permit(:comments, :status_id, :department_id, :reservation_id, :customer_id, :lead_type_id,
                                  :follow_up_id, :created_by_user_id, :assigned_user_id,
-                                 :follow_up_attributes => [:id, :datetime, :description])
+                                 :follow_up_attributes => [:id, :datetime, :description, :_destroy])
   end
 end

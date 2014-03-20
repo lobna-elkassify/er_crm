@@ -1,3 +1,23 @@
 <h1>New lead</h1>
 
-<%= render 'form' %>
+<%= form_for(@lead) do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
+  <%= f.fields_for :follow_up do |follow_up_form| %> 
+    <div>
+      Follow up Date
+      <%= follow_up_form.datetime_select :datetime, {:start_year => Time.now.year, :end_year => Time.now.year + 3,
+                                                     :ampm => true, :minute_step => 30} %>
+    </div>
+    <div>
+      <%= follow_up_form.label :description, :style => "vertical-align: top" %>
+      <%= follow_up_form.text_area :description, :cols => 50, :rows => 5 %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :comments, :style => "vertical-align: top" %>
+    <%= f.text_area :comments, :cols => 50, :rows => 5 %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
