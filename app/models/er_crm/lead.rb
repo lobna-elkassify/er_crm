@@ -30,17 +30,17 @@ module ErCrm
       end
 
       #Uncoment these lines if the enngine is run from the dummy hosting app
-        def owner_user
-          User.find(created_by_user_id)
-        end
+        # def owner_user
+        #   User.find(created_by_user_id)
+        # end
 
-        def assigned_user
-          User.find(assigned_user_id)
-        end
+        # def assigned_user
+        #   User.find(assigned_user_id)
+        # end
 
-        def reservation
-          Reservation.find(reservation_id)
-        end
+        # def reservation
+        #   Reservation.find(reservation_id)
+        # end
       #-----
     #-----
   end

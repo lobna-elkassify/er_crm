@@ -16,10 +16,10 @@
             </a>
             <ul class="dropdown-menu pull-right">
               <li>
-                <a href="<%= user_personal_information_path %>" title="">My Account</a>
+                <a href="<%= Rails.application.routes.url_helpers.user_personal_information_path %>" title="">My Account</a>
               </li>
               <li>
-                <a href="<%= destroy_user_session_path %>" title="">Log Out</a>
+                <a href="<%= Rails.application.routes.url_helpers.destroy_user_session_path %>" title="">Log Out</a>
               </li>
             </ul>
           </div>

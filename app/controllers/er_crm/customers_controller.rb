@@ -72,6 +72,13 @@ class ErCrm::CustomersController < ErCrm::ApplicationController
       format.js do
         begin
           @customer.save!
+          
+          if attribute_name == :country_id
+            attribute_value = Country.find(@customer.country_id).name
+          elsif attribute_name == :region_id
+            attribute_value = Region.find(@customer.region_id).name
+          end
+
           render :partial => "update_single_attribute.js.erb", :locals =>{
             :attribute_name => attribute_name.to_s,
             :attribute_value => attribute_value

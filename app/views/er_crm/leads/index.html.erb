@@ -23,8 +23,8 @@
       <td><%= lead.department.try(:name) %></td>
       <td><%= lead.lead_type.try(:name) %></td>
       <td>
-        <%= link_to lead.reservation_id, "/"
-            #link_to lead.reservation_id, Rails.application.routes.url_helpers.activeadmin_reservation_path(lead.reservation_id) unless lead.reservation_id.nil?
+        <%= #link_to lead.reservation_id, "/"
+            link_to lead.reservation_id, Rails.application.routes.url_helpers.activeadmin_reservation_path(lead.reservation_id) unless lead.reservation_id.nil?
         %>
       </td>
       <td><%= lead.follow_up.try(:datetime).try(:strftime, "%Y-%m-%d %H:%M") %></td>

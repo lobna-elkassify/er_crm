@@ -1,27 +1,14 @@
-<%if attribute_name=="zip_code" %>
-  <%zip = ZipCode.where(zip: @lead.zip_code).limit(1).first%>
-  <%if(zip.present?)%>
-    var city_div = $("span.js-edit.city").find("div");
-    var state_div = $("span.js-edit.state_name").find("div");
-    city_div.html("<%= zip.city%>");
-    state_div.html("<%= zip.state.name %>");
-  <%end%>
-<%end%>
+var saveAnchor = $("a.icn-save.<%= attribute_name %>");
+var editContainer = saveAnchor.parent("span.js-upload");
+var showContainer = editContainer.prev("span.js-edit");
 
-var target = $("a.icn-save.<%= attribute_name %>");
-var parent = target.parent("span.js-upload");
-var element_to_show = parent.prev("span.js-edit");
-var hidden_to_update = element_to_show.children(":hidden");
-var success_message_div = element_to_show.find(".success_msg");
+editContainer.addClass("hidden");
+showContainer.find(".field_value").html("<%= attribute_value%>");
 
-parent.addClass("hidden");
-element_to_show.find(".field_value").html("<%= attribute_value%>");
+showContainer.children(":hidden").val("<%= attribute_value %>");
+showContainer.removeClass("hidden");
 
-hidden_to_update.val("<%= attribute_value %>");
-element_to_show.removeClass("hidden");
+saveAnchor.siblings("span").addClass("hidden")
 
-var error_message_div = target.siblings("span");
-error_message_div.addClass("hidden")
-
-var success_message = "<%= attribute_name.humanize %> has been updated successfully" ;
-success_message_div.html(success_message).removeClass("hidden")
+var successMsg = "<%= attribute_name.humanize %> saved successfully" ;
+showContainer.find(".success_msg").html(successMsg).removeClass("hidden")
