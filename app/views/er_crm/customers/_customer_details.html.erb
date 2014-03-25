@@ -1,0 +1,132 @@
+<div class="row grid20 customerPart js-customerPart">
+  <form>
+    <div class="span9">
+      <div class="row grid10">
+        <div class="span2">
+          <div class="control-group">
+            <div class="controls">
+              <% if customer.customer_user_id %>
+                <img src="<%= customer.user.avatar.url(:size100) %>" class="customerImg" />
+              <% else %>
+                <img src="<%= image_path('er_crm/pages/avatar.jpg') %>" class="customerImg" />
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="span4">
+          <div class="control-group">
+            <%= render_edit_text_field("name","#{customer.name}", {:display_wrapper => :h2}) %>
+          </div>
+          <div class="control-group">
+            <%= render_edit_email_field("email", "#{customer.email}") %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span3">        
+      <ul class="pull-right phonePart form-horizontal">
+        <li>
+          <div class="control-group">
+            <label class="control-label">Home:</label>
+            <%= render_edit_text_field("home_phone", "#{customer.home_phone}", {:edit_input_class => "input-small"}) %>
+          </div>
+        </li>
+        <li>
+          <div class="control-group">
+            <label class="control-label">Cell:</label>
+            <%= render_edit_text_field("mobile_number", "#{customer.mobile_number}", {:edit_input_class => "input-small"}) %>
+          </div>
+        </li>
+        <li>
+          <div class="control-group">
+            <label class="control-label">Work:</label>
+            <%= render_edit_text_field("work_phone", "#{customer.work_phone}", {:edit_input_class => "input-small"}) %>
+          </div>
+        </li>
+        <li>
+          <div class="control-group">
+            <label class="control-label">Fax:</label>
+            <%= render_edit_text_field("fax_number", "#{customer.fax_number}", {:edit_input_class => "input-small"}) %>
+          </div>
+        </li>
+      </ul>        
+    </div>
+    <div class="clearfix"></div>
+    <div class="span12">
+      <div class="form-horizontal row">
+        <div class="span3">
+          <div class="control-group">
+            <label class="control-label" for="inputStreet">Street:</label>
+            <%= render_edit_text_field("street_address","#{customer.street_address}") %>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="control-group">
+            <label class="control-label" for="inputCity">City:</label>
+            <%= render_edit_text_field("city","#{customer.city}") %>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="control-group">
+            <label class="control-label" for="inputCountry">Country:</label>
+            <%= render_edit_select_field("country_id", "#{customer.country_id}", Country.all) %>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="control-group">
+            <label class="control-label" for="inputState">State:</label>
+            <%= render_edit_select_field("region_id", "#{customer.region_id}", Region.all) %>
+          </div>
+        </div>
+        <div class="span1">
+          <div class="control-group">
+            <label class="control-label" for="inputZip">Zip:</label>
+            <%= render_edit_text_field("zip_code","#{customer.zip_code}", {:edit_input_class => "input-mini"}) %>
+          </div>
+        </div>         
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  $(document).ready(function(){
+    showHidePensBtn()
+
+    $(".icn-edit").click(function(e){
+      e.preventDefault();
+      var target = $(this);
+      var parent = target.parent("span.js-edit");
+      parent.find(".success_msg").addClass("hidden")
+      var savecontainer = parent.next("span.js-upload");
+      parent.addClass("hidden");
+      savecontainer.removeClass("hidden");
+    })
+
+    $(".icn-save").click(function(e){
+      e.preventDefault();
+      var target = $(this);
+      var inputField = target.siblings(".field_value");
+
+      $.ajax({
+        url: "<%= update_single_attribute_customer_path(customer.id) %>",
+        type: 'post',
+        data: {
+          authenticity_token: '<%= form_authenticity_token %>',
+          attribute_name: target.attr("class").match(/[^ ]*$/)[0],
+          attribute_value: inputField.val()
+        },
+        
+        success: function(response){
+          //_update_single_attribute.js.erb will be rendered
+        },
+        error: function(xhr, status, error){
+          var errorDiv = target.siblings("span");
+          errorDiv.html(xhr.responseText);
+          errorDiv.removeClass("hidden");
+        }
+      });
+
+    })
+  })
+</script>

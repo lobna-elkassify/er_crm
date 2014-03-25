@@ -15,11 +15,15 @@
               <b class="caret"></b> 
             </a>
             <ul class="dropdown-menu pull-right">
-              <li>
-                <a href="<%= Rails.application.routes.url_helpers.user_personal_information_path %>" title="">My Account</a>
+              <li>                
+                <%= 
+                  link_to "My Account", main_app.user_personal_information_path                  
+                %>
               </li>
               <li>
-                <a href="<%= Rails.application.routes.url_helpers.destroy_user_session_path %>" title="">Log Out</a>
+                <%= 
+                  link_to "Log Out", main_app.destroy_user_session_path
+                %>                
               </li>
             </ul>
           </div>

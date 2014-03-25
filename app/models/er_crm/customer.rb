@@ -46,23 +46,19 @@ module ErCrm
         [self.street_address, self.city].join(' ') + ", #{ self.region.try(:name) } #{self.zip_code}"
       end
 
-      #Uncoment these lines if the enngine is run from the dummy hosting app
-        # def region
-        #   Region.find(region_id)
-        # end
+      
+      unless Region.table_exists?
+        def region; Region.find(region_id); end
+      end
 
-        # def country
-        #   Country.find(country_id)
-        # end
+      unless Country.table_exists?
+        def country; Country.find(country_id); end
+      end
 
-        # def owner_user
-        #   User.find(created_by_user_id)
-        # end
-
-        # def user
-        #   User.find(customer_user_id)
-        # end
-      #-----
+      unless User.table_exists?
+        def owner_user; User.find(created_by_user_id); end
+        def user; User.find(customer_user_id); end
+      end
     #-----
   end
 end

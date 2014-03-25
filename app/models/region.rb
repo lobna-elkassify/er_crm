@@ -20,4 +20,8 @@ class Region
   def self.find(id)
     Region.all.select{|region| region.id == id}.first
   end
+
+  def self.table_exists?
+    false
+  end
 end

@@ -29,19 +29,14 @@ module ErCrm
         Status.find_by_id(self.status_id)
       end
 
-      #Uncoment these lines if the enngine is run from the dummy hosting app
-        # def owner_user
-        #   User.find(created_by_user_id)
-        # end
+      unless User.table_exists?
+        def owner_user; User.find(created_by_user_id); end
+        def assigned_user; User.find(assigned_user_id); end
+      end
 
-        # def assigned_user
-        #   User.find(assigned_user_id)
-        # end
-
-        # def reservation
-        #   Reservation.find(reservation_id)
-        # end
-      #-----
+      unless Reservation.table_exists?
+        def reservation; Reservation.find(reservation_id); end
+      end
     #-----
   end
 end

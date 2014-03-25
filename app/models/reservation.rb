@@ -12,4 +12,8 @@ class Reservation
   def self.find(id)
     Reservation.all.select{|reservation| reservation.id == id}.first
   end
+
+  def self.table_exists?
+    false
+  end
 end

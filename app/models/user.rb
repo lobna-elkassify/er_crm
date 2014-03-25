@@ -23,6 +23,10 @@ class User
     User.all.select{|user| user.id == id}.first
   end
 
+  def self.table_exists?
+    false
+  end
+
   class Avatar
     def url(size)
       'er_crm/pages/avatar.jpg'

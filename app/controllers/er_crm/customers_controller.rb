@@ -1,6 +1,7 @@
 class ErCrm::CustomersController < ErCrm::ApplicationController
   def index
-    @customers = ErCrm::Customer.all#includes([:country, :region, :owner_user, :user])
+    page_size = params[:per_page] || 10
+    @customers = ErCrm::Customer.send(Kaminari.config.page_method_name, params[:page]).per(page_size)#includes([:country, :region, :owner_user, :user])
 
     respond_to do |format|
       format.html

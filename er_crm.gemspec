@@ -14,14 +14,15 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc", "er_crm.gemspec"] - 
             ["app/models/user.rb", "app/models/region.rb", "app/models/country.rb", "app/models/reservation.rb", 
-             "app/models/devise.rb", "app/helpers/test_helper.rb"]
-  s.test_files = Dir["test/**/*"]
+             "app/models/devise.rb", "app/models/main_app.rb"]
+  s.test_files = Dir["test/**/*"] - Dir["test/dummy/tmp"] - Dir["test/dummy/log"]
 
   s.add_dependency 'rails', '3.2.14'
   s.add_dependency "jquery-rails", "< 3.0.0"
   s.add_dependency "strong_parameters", "~> 0.2.1"
   s.add_dependency "foreigner", "~> 1.5.0"
   s.add_dependency 'audited-activerecord'
+  s.add_dependency "kaminari", '0.14.1'
 
   #s.add_development_dependency "sqlite3"
 end

@@ -20,4 +20,8 @@ class Country
   def self.usa
     Country.all.select{|country| country.iso2.try(:downcase) == 'us'}.first
   end
+
+  def self.table_exists?
+    false
+  end
 end

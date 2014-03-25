@@ -11,6 +11,7 @@ gem "strong_parameters", "~> 0.2.1"
 gem "foreigner", "~> 1.5.0"
 gem "audited-activerecord"
 gem "jquery-rails"
+gem "kaminari", '0.14.1'
 
 group :sqlite do
   gem "sqlite3"
