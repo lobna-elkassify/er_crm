@@ -6193,18 +6193,6 @@ form .dropdown select {
     padding-right: 26px; }
 .adminLead .customerPart .span3 .control-group {
   overflow: hidden; }
-.adminLead .customerPart ul {
-  text-align: right;
-  list-style: none;
-  margin-right: 26px; }
-  .adminLead .customerPart ul li {
-    list-style: none; }
-  .adminLead .customerPart ul label {
-    display: inline-block;
-    margin-right: 3px; }
-  .adminLead .customerPart ul p {
-    display: inline-block;
-    margin-bottom: 0; }
 .adminLead .customerPart .customerImg {
   height: 100px;
   border: 1px solid #e1e1e1; }
@@ -6223,6 +6211,29 @@ form .dropdown select {
     opacity: 0.85; }
 .adminLead .customerPart .input-small {
   margin-bottom: 3px; }
+.adminLead .phonePart.form-horizontal {
+  margin-left: 0;
+  text-align: right;
+  list-style: none;
+  margin-bottom: 15px; }
+  .adminLead .phonePart.form-horizontal li {
+    list-style: none; }
+  .adminLead .phonePart.form-horizontal label {
+    display: inline-block;
+    margin-right: 3px; }
+  .adminLead .phonePart.form-horizontal p {
+    display: inline-block;
+    margin-bottom: 0;
+    float: left; }
+  .adminLead .phonePart.form-horizontal .controls {
+    width: 130px;
+    float: right; }
+    .adminLead .phonePart.form-horizontal .controls .input-small {
+      float: left; }
+  .adminLead .phonePart.form-horizontal .control-label {
+    margin-bottom: 2px; }
+  .adminLead .phonePart.form-horizontal .control-group {
+    margin-bottom: 0; }
 .adminLead .contactRequest .otherLeads {
   font-size: 12px; }
   .adminLead .contactRequest .otherLeads label {

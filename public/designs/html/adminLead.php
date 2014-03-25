@@ -44,40 +44,66 @@
 					</div>
 				</div>
 				<div class="span3">
-					<div class="control-group">
-							<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
-					<!-- 		<a class="btn  btnEditSave  " href="#"><i class="icon-save"></i></a> -->
-							<ul class="pull-right">
-								<li>
-									<label>Cell:</label>
-									<!-- <input type="text" id="inputCell" value="23456789" class="input-small"> -->
-								<p>
-										123456789
-									</p>
-								</li>
-								<li>
-									<label>Home:</label>
-									<!-- <input type="text" id="inputHome" value="23456789" class="input-small"> -->
-								<p>
-										123456789
-									</p>
-								</li>
-								<li>
-									<label>Work:</label>
-								<!-- 	<input type="text" id="inputWork" value="23456789" class="input-small"> -->
+				
+					<ul class="pull-right  phonePart  form-horizontal">
+						<li>
+							<div class="control-group">
+								<label class="control-label">Cell:</label>
+								<div class="controls">
+									<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
 									<p>
 										123456789
 									</p>
-								</li>
-								<li>
-									<label>Fax:</label>
-									<!-- <input type="text" id="inputFax" value="23456789" class="input-small"> -->
+								</div>
+								<!-- <div class="controls">	<a class="btn  btnEditSave  " href="#"><i class="icon-save"></i></a>
+							<input type="text" id="inputCell" value="23456789" class="input-small"> </div>-->
+							</div>
+							
+						</li>
+						<li>
+							<div class="control-group">
+								<label class="control-label">Home:</label>
+								<div class="controls">
+									<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
 									<p>
 										123456789
 									</p>
-								</li>
-							</ul>
-						</div>
+								</div>
+									<!-- <div class="controls">	<a class="btn  btnEditSave  " href="#"><i class="icon-save"></i></a>
+							<input type="text" id="inputHome" value="23456789" class="input-small"> </div>-->
+							</div>
+						
+						</li>
+						<li>
+							<div class="control-group">
+								<label class="control-label">Work:</label>
+								<div class="controls">
+									<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
+									<p>
+										123456789
+									</p>
+								</div>
+									<!-- <div class="controls">	<a class="btn  btnEditSave" href="#"><i class="icon-save"></i></a>
+							<input type="text" id="inputWork" value="23456789" class="input-small"> </div> -->
+							</div>
+						
+						</li>
+						<li>
+							<div class="control-group">
+								<label class="control-label">Fax:</label>
+								<div class="controls">
+									<a class="btn  btnEditSave js-btnEditSave hidden" href="#"><i class="icon-pencil"></i></a>
+									<p>
+										123456789
+									</p>
+								</div>
+											<!-- <div class="controls">	<a class="btn  btnEditSave" href="#"><i class="icon-save"></i></a>
+							<input type="text" id="inputFax" value="23456789" class="input-small"> </div> -->
+							</div>
+				
+						</li>
+					</ul>
+					
 				</div>
 				<div class="clearfix"></div>
 				<div class="span12">

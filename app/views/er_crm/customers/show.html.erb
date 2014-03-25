@@ -26,35 +26,33 @@
           </div>
         </div>
       </div>
-      <div class="span3">
-        <div class="control-group">
-          <ul class="pull-right">
-            <li style="<%= 'display:none' if @customer.mobile_number.blank? %>">
-              <label>Cell:</label>
-              <p>
-                <%= @customer.mobile_number %>
-              </p>
-            </li>
-            <li style="<%= 'display:none' if @customer.home_phone.blank? %>">
-              <label>Home:</label>
-              <p>
-                <%= @customer.home_phone %>
-              </p>
-            </li>
-            <li style="<%= 'display:none' if @customer.work_phone.blank? %>">
-              <label>Work:</label>
-              <p>
-                <%= @customer.work_phone %>
-              </p>
-            </li>
-            <li style="<%= 'display:none' if @customer.fax_number.blank? %>">
-              <label>Fax:</label>
-              <p>
-                <%= @customer.fax_number %>
-              </p>
-            </li>
-          </ul>
-        </div>
+      <div class="span3">        
+        <ul class="pull-right phonePart form-horizontal">
+          <li>
+            <div class="control-group">
+              <label class="control-label">Home:</label>
+              <%= render_edit_text_field("home_phone", "#{@customer.home_phone}", {:edit_input_class => "input-small"}) %>
+            </div>
+          </li>
+          <li>
+            <div class="control-group">
+              <label class="control-label">Cell:</label>
+              <%= render_edit_text_field("mobile_number", "#{@customer.mobile_number}", {:edit_input_class => "input-small"}) %>
+            </div>
+          </li>
+          <li>
+            <div class="control-group">
+              <label class="control-label">Work:</label>
+              <%= render_edit_text_field("work_phone", "#{@customer.work_phone}", {:edit_input_class => "input-small"}) %>
+            </div>
+          </li>
+          <li>
+            <div class="control-group">
+              <label class="control-label">Fax:</label>
+              <%= render_edit_text_field("fax_number", "#{@customer.fax_number}", {:edit_input_class => "input-small"}) %>
+            </div>
+          </li>
+        </ul>        
       </div>
       <div class="clearfix"></div>
       <div class="span12">
