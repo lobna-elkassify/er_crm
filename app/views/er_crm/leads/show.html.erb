@@ -19,10 +19,205 @@
       </p>
     </div>
     <div class="span12 otherLeads">
-      <label>Other leads: </label><span>1 Active , 2 closed , 5 soliid</span>
-      <a href="#">View All</a>
+      <label>Other leads: </label>
+      <span>
+        <%= ErCrm::Lead.open_of_customer(@lead.customer_id).length %> Open, 
+        <%= ErCrm::Lead.closed_of_customer(@lead.customer_id).length %> Closed, 
+        <%= ErCrm::Lead.sold_of_customer(@lead.customer_id).length %> Sold
+      </span>
+      <a href="<%= customer_path(@lead.customer_id) %>">View All</a>
     </div>
   </div>
 
   <hr class="grid30"/>
+
+  <div class="row grid40 infoPart">
+    <form action="<%= lead_path(@lead) %>" method="post">
+      <input name="_method" type="hidden" value="put" />
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <!-- <div class="span12">
+        <div class="control-group">
+          <label class="control-label">Add a comment:</label>
+          <div class="controls">
+            <textarea rows="5"></textarea>
+            <span class="help-block js-error hidden">can't be blank</span>
+          </div>
+        </div>
+      </div> -->
+      <div class="clearfix"></div>
+      <div class="span3">
+        <div class="control-group">
+          <label class="control-label" for="inputStatus">Status:</label>
+          <div class="controls">
+            <div class="dropdown" for="inputStatus">
+              <select name="lead[status_id]">
+                <% ErCrm::Status.all.each do |status| %>
+                  <option value="<%= status.id %>" <%= 'selected' if status.id == @lead.status_id %>><%= status.name %></option>
+                <% end %>
+              </select>
+            </div>
+            <% if @lead.errors[:status_id].length > 0 %>
+              <span class="help-block js-error"><%= @lead.errors[:status_id].join(' & ') %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputAssignedPerson">Assigned Person:</label>
+          <div class="controls">
+            <div class="dropdown" for="inputAssignedPerson">
+              <select id='js-userTrigger' name="lead[assigned_user_id]">
+                <% User.all.each do |user| %>
+                  <option value="<%= user.id %>" <%= 'selected' if user.id == @lead.assigned_user_id %>
+                          data-departmentId="<%= user.er_crm_department_ids %>"><%= user.name %></option>
+                <% end %>
+              </select>
+            </div>
+            <% if @lead.errors[:assigned_user_id].length > 0 %>
+              <span class="help-block js-error"><%= @lead.errors[:assigned_user_id].join(' & ') %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputAssignedDepartment">Assigned Department:</label>
+          <div class="controls">
+            <div class="dropdown" for="inputAssignedDepartment">
+              <select id="js-departmentTrigger" name="lead[department_id]">
+                <% ErCrm::Department.where(:category_id => @lead.lead_category_id).each do |department| %>
+                  <option value="<%= department.id %>" <%= 'selected' if department.id == @lead.department_id %>><%= department.name %></option>
+                <% end %>
+              </select>
+            </div>
+            <% if @lead.errors[:department_id].length > 0 %>
+              <span class="help-block js-error"><%= @lead.errors[:department_id].join(' & ') %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputAssignedType">Lead Type:</label>
+          <div class="controls">
+            <div class="dropdown" for="inputAssignedType">
+              <select name="lead[lead_type_id]">
+                <% ErCrm::LeadType.where(:lead_category_id => @lead.lead_category_id).each do |type| %>
+                  <option value="<%= type.id %>" <%= 'selected' if type.id == @lead.lead_type_id %>><%= type.name %></option>
+                <% end %>
+              </select>
+            </div>
+            <% if @lead.errors[:lead_type_id].length > 0 %>
+              <span class="help-block js-error"><%= @lead.errors[:lead_type_id].join(' & ') %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="span9">
+        <div class="control-group">
+          <label class="control-label" for="inputAssignedPerson">Follow-Up:</label>
+          <div class="row-fluid">
+            <input name="lead[follow_up_attributes][id]" type="hidden" value="<%= @lead.follow_up_id %>" />
+            <div class="span3">
+              <label class="radio">
+                <input type="radio" name="lead[follow_up_attributes][_destroy]" value="true" <%= 'checked' if @lead.follow_up_id.nil? %>>
+                No Follow-Up
+              </label>
+            </div>
+            <div class="span3">
+              <label class="radio">
+                <input type="radio" name="lead[follow_up_attributes][_destroy]" value="false" <%= 'checked' if @lead.follow_up_id %>>
+                Next Follow-Up
+              </label>
+            </div> 
+            <div class="span3">
+              <div class="controls grid10 dateDiv">
+                <input name="lead[follow_up_attributes][date]" type="text" value="<%= @lead.follow_up.try(:datetime).try(:strftime, '%m/%d/%Y') %>" class="js-date">
+                <span class="icn-Calendar js-dateTrigger"></span>
+                <span class="help-block js-error hidden">can't be blank</span>
+              </div>
+            </div>
+            <div class="span3">
+              <div class="controls grid10">
+                <!--<div class="dropdown">
+                   <select>
+                    <option>10 AM</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select> 
+                </div>-->
+                <input name="lead[follow_up_attributes][hour]" value="<%= @lead.follow_up.try(:datetime).try(:strftime, '%I') %>" type="text"> : 
+                <input name="lead[follow_up_attributes][minutes]" value="<%= @lead.follow_up.try(:datetime).try(:strftime, '%M') %>" type="text">
+                <select name="lead[follow_up_attributes][meridian]">
+                  <options>
+                    <% ["AM", "PM"].each do |meridian| %>
+                      <option value="<%= meridian %>" <%= 'selected' if @lead.follow_up.try(:datetime).try(:strftime, '%P') %> ><%= meridian %></option>
+                    <% end %>
+                  </options>
+                </select>
+                <span class="help-block js-error hidden">can't be blank</span>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="spam12 grid20">
+              <label class="control-label" for="inputDescription">Description:</label>
+              <div class="controls">
+                <input type="text" id="inputDescription" name="lead[follow_up_attributes][description]" value="<%= @lead.follow_up.try(:description) %>">
+                <span class="help-block js-error hidden">can't be blank</span>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="spam12">
+              <button class="btn-highlight" type="submit">Update<span class="icn-arrowWhiteRight"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="grid10 activityLog">
+    <h2>Activity Log</h2>
+    <div class="row">
+      <% @lead.audits.unscoped.order("created_at DESC").each do |audit| %>
+        <div class="span12 grid10">
+          <ul>
+            <li>
+              <h4><%= audit.user.try(:name) %>
+                <small><%= audit.created_at.strftime("%m/%d/%Y %I:%M %P %Z") %></small>
+              </h4>
+            </li>
+            <% audit.audited_changes.each do |change| %>
+              <li>
+                <% changes = Array.wrap(change.last) %>
+                » <%= change.first %> 
+                <% if changes.length == 1 %>
+                  <span> <%= changes.first %>
+                <% else %>
+                  changed from <span><%= changes.first %></span> to <span><%= changes.last %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $(".js-date").datepicker({minDate: 0});
+    toogleUsersSelection();
+
+    $("#js-departmentTrigger").change(function(){
+      toogleUsersSelection();
+    });
+
+    $('.js-dateTrigger').click(function(){
+      $(".js-date").datepicker('show');
+    });
+  })
+
+  function toogleUsersSelection(){
+    var selectedDepartmentId = $("#js-departmentTrigger").val();
+    $("#js-userTrigger option").prop('disabled', true);
+    $("#js-userTrigger").find("option[data-departmentId*='" + selectedDepartmentId + "']").prop('disabled', false)
+  }
+</script>

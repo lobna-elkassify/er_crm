@@ -10,7 +10,7 @@
     <b>Category:</b>
     <select required name="department[category_id]">
       <% ErCrm::LeadCategory.all.each do |lead_category| %>
-        <option value="<%= lead_category.id %>" <%= 'selected' if lead_category.id == @department.lead_category_id %>>
+        <option value="<%= lead_category.id %>" <%= 'selected' if lead_category.id == @department.category_id %>>
           <%= lead_category.name %>
         </option>
       <% end %>

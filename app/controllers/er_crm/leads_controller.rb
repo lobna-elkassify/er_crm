@@ -47,14 +47,14 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
   end
 
   def update
-    @lead = ErCrm::Lead.find(params[:id])
-    @lead.attributes = permitted_params
+    @lead = ErCrm::Lead.find(params[:id])    
+    @lead.update_custom_attributes(permitted_params)
 
     begin
       @lead.save!
-      redirect_to lead_path(@lead)
+      redirect_to leads_path
     rescue ActiveRecord::RecordInvalid => e
-      render :action => :edit
+      render :action => :show
     end
   end
 
@@ -67,7 +67,8 @@ class ErCrm::LeadsController < ErCrm::ApplicationController
 
   def permitted_params
     params.require(:lead).permit(:comments, :status_id, :department_id, :reservation_id, :customer_id, :lead_type_id,
-                                 :follow_up_id, :created_by_user_id, :assigned_user_id,
-                                 :follow_up_attributes => [:id, :datetime, :description, :_destroy])
+                                 :follow_up_id, :created_by_user_id, :assigned_user_id, :lead_category_id,
+                                 :follow_up_attributes => [:id, :datetime, :description, :_destroy, 
+                                                           :date, :hour, :minutes, :meridian])
   end
 end
