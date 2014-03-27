@@ -175,7 +175,7 @@
   <div class="grid10 activityLog">
     <h2>Activity Log</h2>
     <div class="row">
-      <% @lead.audits.unscoped.order("created_at DESC").each do |audit| %>
+      <% @lead.audits.reorder("created_at DESC").each do |audit| %>
         <div class="span12 grid10">
           <ul>
             <li>

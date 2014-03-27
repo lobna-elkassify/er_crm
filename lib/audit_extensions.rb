@@ -1,3 +1,4 @@
+require 'audited-activerecord'
 class Audited::Adapters::ActiveRecord::Audit
   before_save do |a|
     if a.auditable_type == "ErCrm::Lead"
